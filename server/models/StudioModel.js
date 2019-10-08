@@ -7,8 +7,8 @@ const studioModelSchema = new Schema({
     type: String,
     default: "http://fr.cavernestudio.com/pics/caverne_01.jpg"
   },
-  projects: [String]
+  projects: [{type: Schema.Types.ObjectId, ref: "projects"}]
 });
 
-const StudioModelSchema = mongoose.model("StudioModel", studioModelSchema);
+const StudioModelSchema = mongoose.model("studios", studioModelSchema);
 module.exports = StudioModelSchema;

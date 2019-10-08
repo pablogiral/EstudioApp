@@ -97,6 +97,9 @@ app.use('/api/auth', authRoutes);
 
 const studioRoutes = require('./routes/studioroutes');
 app.use('/api/studioroutes', studioRoutes);
+
+const projectRoutes = require('./routes/projectRoutes');
+app.use('/api/projectRoutes', projectRoutes);
       
 
 module.exports = app;
