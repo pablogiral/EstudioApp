@@ -17,7 +17,7 @@ class Calendar extends Component {
   }
 
   onChange = (startDate, endDate) => {
-    console.log(startDate, endDate)
+    // console.log(startDate, endDate)
   this.setState({ startDate, endDate })}
 
   render = () => {

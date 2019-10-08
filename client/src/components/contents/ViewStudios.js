@@ -1,33 +1,49 @@
 import React, { Component } from 'react'
 import CreateStudio from './CreateStudio';
+import Studio from './Studio';
+import StudioService from './StudioService';
 
 export default class ViewStudios extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state={
       studios: [],
     }
+    this.service = new StudioService();
   }
 
   getStudio = studioObj => {
+    let newArray = [...this.state.studios];
+    newArray.push(studioObj);
     this.setState({
-      studios: [studioObj]
+      ...this.state, studios: newArray
     });
   };
 
+  componentDidMount() {
+    this.getAllStudios();
+  }
+
+  async getAllStudios () {
+    const getStudios = await this.service.allStudios()
+    this.setState({...this.state, studios: getStudios.data})
+  }
+
   render() {
-    if (this.state.studios) {
+    console.log(this.state.studios)
+    if (!this.state.studios.length) {
       return ( 
       <div>
-        <CreateStudio></CreateStudio>
-        <p>estudio A</p>
-        <p>estudio B</p>
-      </div> )
+        <CreateStudio getStudio={this.getStudio} />
+      </div>
+      )
     }
     else {
       return (
         <div>
-          <a>else</a>
+          {
+            this.state.studios.map(studio => <Studio key={studio._id} studio={studio} />)
+          }
         </div>
       )
     }

@@ -30,4 +30,8 @@ router.post("/studiocreate", (req, res, next) => {
     .catch(e => next(e));
 });
 
+router.get("/allStudios", (req, res, next) => {
+  StudioModel.find().then(data => res.status(200).json({ data }));
+});
+
 module.exports = router;
