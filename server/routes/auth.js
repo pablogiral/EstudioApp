@@ -10,8 +10,8 @@ const bcrypt = require("bcrypt");
 const login = (req, user) => {
   return new Promise((resolve,reject) => {
     req.login(user, err => {
-      console.log('req.login ')
-      console.log(user)
+      // console.log('req.login ')
+      // console.log(user)
 
       
       if(err) {
@@ -29,9 +29,9 @@ router.post('/signup', (req, res, next) => {
 
   const {username, password, email} = req.body;
 
-  console.log('username: ', username)
-  console.log('password: ', password)
-  console.log('email: ', email)
+  // console.log('username: ', username)
+  // console.log('password: ', password)
+  // console.log('email: ', email)
   // Check for non empty user, password or email
   if (!username || !password || !email){
     next(new Error('You must provide valid credentials'));

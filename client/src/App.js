@@ -8,6 +8,7 @@ import "./App.css";
 // import Calendar from "./components/calendar/Calendar";
 import ViewStudios from "./components/contents/ViewStudios";
 import ViewCalendar from "./components/calendar/ViewCalendar";
+import Example from "./components/contents/formTest";
 export default class App extends Component {
   constructor() {
     super();
@@ -61,6 +62,8 @@ export default class App extends Component {
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
               />
+              
+              {/* <Example></Example> */}
               <Switch>
                 <Route
                   exact
