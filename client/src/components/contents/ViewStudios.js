@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CreateStudio from './CreateStudio';
 import Studio from './Studio';
 import StudioService from './StudioService';
+import './viewStudio.css'
 
 export default class ViewStudios extends Component {
   constructor(props){
@@ -30,7 +31,7 @@ export default class ViewStudios extends Component {
   }
 
   render() {
-    console.log(this.state.studios)
+    // console.log(this.state.studios)
     if (!this.state.studios.length) {
       return ( 
       <div>
@@ -40,11 +41,13 @@ export default class ViewStudios extends Component {
     }
     else {
       return (
-        <div>
+        <React.Fragment>
+        <div className="studioView">
           {
             this.state.studios.map(studio => <Studio key={studio._id} studio={studio} />)
           }
         </div>
+        </React.Fragment>
       )
     }
   }

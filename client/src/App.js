@@ -8,6 +8,7 @@ import "./App.css";
 // import Calendar from "./components/calendar/Calendar";
 import ViewStudios from "./components/contents/ViewStudios";
 import ViewCalendar from "./components/calendar/ViewCalendar";
+// import Example from "./components/contents/formTest";
 export default class App extends Component {
   constructor() {
     super();
@@ -61,19 +62,16 @@ export default class App extends Component {
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
               />
-              <Switch>
-                <Route
-                  exact
-                  path="/viewcalendar"
-                  render={() => <ViewCalendar />}
-                />
-                <Route
-                  exact
-                  path="/viewstudios"
-                  render={() => <ViewStudios />}
-                />
-              </Switch>
             </header>
+
+            <Switch>
+              <Route
+                exact
+                path="/viewcalendar"
+                render={() => <ViewCalendar />}
+              />
+              <Route exact path="/viewstudios" render={() => <ViewStudios />} />
+            </Switch>
           </div>
         </React.Fragment>
       );
@@ -89,24 +87,20 @@ export default class App extends Component {
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
               />
-              <Switch>
-                <Route
-                  exact
-                  path="/signup"
-                  render={() => <Signup getUser={this.getUser} />}
-                />
-                <Route
-                  exact
-                  path="/login"
-                  render={() => <Login getUser={this.getUser} />}
-                />
-                <Route
-                  exact
-                  path="/viewcalendar"
-                  render={() => <ViewCalendar />}
-                />
-              </Switch>
             </header>
+            <Switch>
+              <Route
+                exact
+                path="/signup"
+                render={() => <Signup getUser={this.getUser} />}
+              />
+              <Route
+                exact
+                path="/login"
+                render={() => <Login getUser={this.getUser} />}
+              />
+              
+            </Switch>
           </div>
         </React.Fragment>
       );

@@ -17,21 +17,35 @@ router.post("/studiocreate", (req, res, next) => {
 
       return StudioModel.create({
         studioname: studioname,
-        projects: ["5d9c9dbf28edd167d63a1cc0", "5d9ca49f7966ed66328c87ad"]
+        owner: req.session.passport.user
       });
     })
-    .then(savedStudio => {
-      StudioModel.findById(savedStudio._id)
-        .populate("projects")
-        .then(studioPopulated => {
-          res.json(studioPopulated);
-        });
-    })
+    .then(savedStudio => res.json(savedStudio))
     .catch(e => next(e));
 });
 
+router.post("/associateStudioProject", (req, res, next) => {
+  StudioModel.findOneAndUpdate(
+    req.body.studioID,
+    { $push: { projects: req.body.projectID } },
+    { new: true }
+  )
+    .populate("projects")
+    .then(updatedStudio => res.json(updatedStudio))
+    .catch(e => next(e));
+});
+
+// localhost:3000/api/studios/allStudios/useridDePabloODeDani
 router.get("/allStudios", (req, res, next) => {
-  StudioModel.find().then(data => res.status(200).json({ data }));
+  StudioModel.find({
+    owner: req.session.passport.user
+  })
+    .populate("projects")
+    .populate({
+      path: "owner",
+      model: "users"
+    })
+    .then(data => res.status(200).json(data));
 });
 
 module.exports = router;
