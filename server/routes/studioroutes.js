@@ -49,17 +49,34 @@ router.get("/allStudios", (req, res, next) => {
 });
 
 router.get("/getStudio/:studioID", (req, res, next) => {
-  const id = req.params.studioID
+  const id = req.params.studioID;
   StudioModel.findById(id)
-  .then(studio => res.json(studio))
-  .catch(e => next(e));
-})
+    .then(studio => res.json(studio))
+    .catch(e => next(e));
+});
+
+router.post("/editStudio/:studioID", (req, res, next) => {
+  const id = req.params.studioID;
+  StudioModel.findByIdAndUpdate(
+    id,
+    {
+      studioname: req.body.studioname,
+      studioimage: req.body.studioimage
+    },
+    { new: true }
+  )
+    .then(updatedStudio => res.json(updatedStudio))
+    .catch(e => next(e));
+});
 
 router.post("/deleteStudio/:studioID", (req, res, next) => {
-  const id = req.params.studioID
+  const id = req.params.studioID;
   StudioModel.findByIdAndDelete(id)
-  .then(deletedStudio => res.json(deletedStudio))
-  .catch(e => next(e));
-})
+    .then(deletedStudio => {
+      console.log(deletedStudio);
+      res.json(deletedStudio);
+    })
+    .catch(e => next(e));
+});
 
 module.exports = router;
