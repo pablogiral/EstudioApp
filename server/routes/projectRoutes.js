@@ -11,7 +11,8 @@ router.post("/project", (req, res, next) => {
   }
 
   Projects.create({
-    name: name
+    name: name,
+    musicians: req.body.musicians
   })
     .then(saveProject => res.json(saveProject))
     .catch(e => next(e));

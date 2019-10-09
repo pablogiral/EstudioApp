@@ -7,7 +7,8 @@ const studioModelSchema = new Schema({
     type: String,
     default: "http://fr.cavernestudio.com/pics/caverne_01.jpg"
   },
-  projects: [{type: Schema.Types.ObjectId, ref: "projects"}]
+  projects: [{type: Schema.Types.ObjectId, ref: "projects"}],
+  owner: {type: Schema.Types.ObjectId, ref: "users"}
 });
 
 const StudioModelSchema = mongoose.model("studios", studioModelSchema);
