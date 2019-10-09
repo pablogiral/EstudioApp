@@ -13,7 +13,7 @@ router.post("/studiocreate", (req, res, next) => {
 
   StudioModel.findOne({ studioname })
     .then(foundStudio => {
-      // if (foundStudio) res.status(500).json({ msg: "Studio already exists" });
+      if (foundStudio) res.status(500).json({ msg: "Studio already exists" });
 
       return StudioModel.create({
         studioname: studioname,
@@ -47,5 +47,19 @@ router.get("/allStudios", (req, res, next) => {
     })
     .then(data => res.status(200).json(data));
 });
+
+router.get("/getStudio/:studioID", (req, res, next) => {
+  const id = req.params.studioID
+  StudioModel.findById(id)
+  .then(studio => res.json(studio))
+  .catch(e => next(e));
+})
+
+router.post("/deleteStudio/:studioID", (req, res, next) => {
+  const id = req.params.studioID
+  StudioModel.findByIdAndDelete(id)
+  .then(deletedStudio => res.json(deletedStudio))
+  .catch(e => next(e));
+})
 
 module.exports = router;
