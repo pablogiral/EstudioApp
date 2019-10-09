@@ -47,6 +47,7 @@ export default class ViewStudios extends Component {
             this.state.studios.map(studio => <Studio key={studio._id} studio={studio} />)
           }
         </div>
+        <CreateStudio></CreateStudio>
         </React.Fragment>
       )
     }

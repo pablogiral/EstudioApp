@@ -2,7 +2,7 @@ const express = require("express");
 // const passport = require('passport');
 const router = express.Router();
 const StudioModel = require("../models/StudioModel");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 router.post("/studiocreate", (req, res, next) => {
   const { studioname } = req.body;
@@ -46,6 +46,37 @@ router.get("/allStudios", (req, res, next) => {
       model: "users"
     })
     .then(data => res.status(200).json(data));
+});
+
+router.get("/getStudio/:studioID", (req, res, next) => {
+  const id = req.params.studioID;
+  StudioModel.findById(id)
+    .then(studio => res.json(studio))
+    .catch(e => next(e));
+});
+
+router.post("/editStudio/:studioID", (req, res, next) => {
+  const id = req.params.studioID;
+  StudioModel.findByIdAndUpdate(
+    id,
+    {
+      studioname: req.body.studioname,
+      studioimage: req.body.studioimage
+    },
+    { new: true }
+  )
+    .then(updatedStudio => res.json(updatedStudio))
+    .catch(e => next(e));
+});
+
+router.post("/deleteStudio/:studioID", (req, res, next) => {
+  const id = req.params.studioID;
+  StudioModel.findByIdAndDelete(id)
+    .then(deletedStudio => {
+      console.log(deletedStudio);
+      res.json(deletedStudio);
+    })
+    .catch(e => next(e));
 });
 
 module.exports = router;
