@@ -13,7 +13,7 @@ router.post("/studiocreate", (req, res, next) => {
 
   StudioModel.findOne({ studioname })
     .then(foundStudio => {
-      if (foundStudio) res.status(500).json({ msg: "Studio already exists" });
+      // if (foundStudio) res.status(500).json({ msg: "Studio already exists" });
 
       return StudioModel.create({
         studioname: studioname,
