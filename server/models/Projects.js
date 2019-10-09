@@ -10,7 +10,6 @@ const projectSchema = new Schema({
   name: String,
   bandname: String,
   musicians: [musicianSchema],
-  // studio: [{ type: Schema.Types.ObjectId, ref: "studios" }],
   tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }]
 });
 

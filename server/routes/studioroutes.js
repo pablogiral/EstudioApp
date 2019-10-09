@@ -2,7 +2,7 @@ const express = require("express");
 // const passport = require('passport');
 const router = express.Router();
 const StudioModel = require("../models/StudioModel");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 router.post("/studiocreate", (req, res, next) => {
   const { studioname } = req.body;

@@ -78,6 +78,14 @@ router.get('/currentuser', (req,res,next) => {
   }
 })
 
+router.post('/updateUser', (req, res, next) => {
+  console.log("USER", req.session.passport.user)
+  User.findOneAndUpdate(req.session.passport.user,  {username: req.body.username, email: req.body.email},
+     {new: true}
+     ).then(updatedUser => res.json(updatedUser))
+     .catch(e => next(e));
+})
+
 
 router.get('/logout', (req,res) => {
   req.logout();
