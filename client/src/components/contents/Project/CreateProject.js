@@ -24,10 +24,11 @@ export default class CreateProject extends Component {
       })
       .then(response => {
         this.setState({
+          ...this.state,
           projectname: "",
           bandname: ""
         });
-        this.props.getProject(response);
+        this.props.getProject(response.saveProject);
       })
       .catch(err => {
         this.setState({

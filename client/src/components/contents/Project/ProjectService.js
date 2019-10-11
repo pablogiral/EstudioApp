@@ -14,10 +14,11 @@ class ProjectService {
       .then(response => response.data);
   };
 
-  allProjects = (id) => {
-    return this.service.get(`/allProjects/${id}`)
-    .then(response => response.data);
-  }
+  allProjects = id => {
+    return this.service
+      .get(`/allProjects/${id}`)
+      .then(response => response.data);
+  };
 }
 
 export default ProjectService;

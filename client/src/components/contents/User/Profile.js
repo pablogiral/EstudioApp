@@ -8,8 +8,9 @@ export default class Profile extends Component {
       user: this.props.user
     };
   }
+
   render() {
-    console.log(this.state.user);
+    // console.log(this.state.user);
     return (
       <div className="center">
         <div className="profileCard">
@@ -20,7 +21,9 @@ export default class Profile extends Component {
             <h3>User since: {this.state.user.created_at}</h3>
             <div>
               <button>Edit your profile</button>
-              <button>Delete your profile</button>
+              <button onClick={() => this.props.deleteUser()}>
+                Delete your profile
+              </button>
             </div>
           </div>
         </div>

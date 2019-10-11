@@ -2,7 +2,7 @@ const express = require("express");
 // const passport = require('passport');
 const router = express.Router();
 const Projects = require("../models/Projects");
-const StudioModel = require('../models/StudioModel')
+const StudioModel = require("../models/StudioModel");
 
 router.post("/newProject", (req, res, next) => {
   const { projectname, bandname, belongsTo } = req.body.projectName;
@@ -16,25 +16,26 @@ router.post("/newProject", (req, res, next) => {
     name: projectname,
     bandname: bandname,
     belongsTo: belongsTo
-
   })
     .then((saveProject) => {
-      StudioModel.findByIdAndUpdate(belongsTo, {$push: { projects: saveProject._id } }, {new:true})
-      .then(() => res.json({}))
+      StudioModel.findByIdAndUpdate(
+        belongsTo,
+        { $push: { projects: saveProject._id } },
+        { new: true }
+      ).then(() => res.json({ saveProject }));
     })
-    .then(saveProject => res.json({saveProject}))
     .catch(e => next(e));
 });
 
 router.get("/allProjects/:id", (req, res, next) => {
-  console.log(req.params.id)
+  console.log(req.params.id);
   Projects.find({
     belongsTo: req.params.id
   })
     .then(allProjects => {
-      console.log(allProjects)
+      console.log(allProjects);
       // res.json({allProjects})
-      })
+    })
     .catch(e => next(e));
 });
 

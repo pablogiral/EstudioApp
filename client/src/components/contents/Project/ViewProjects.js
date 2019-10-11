@@ -3,7 +3,7 @@ import ProjectService from "./ProjectService";
 import StudioService from "./../Studio/StudioService";
 import Project from "./Project";
 import CreateProject from "./CreateProject";
-import './viewProjects.css'
+import "./viewProjects.css";
 
 export default class viewProjects extends Component {
   constructor(props) {
@@ -17,11 +17,12 @@ export default class viewProjects extends Component {
   }
 
   getProject = project => {
+    // console.log(project);
     let newArray = [...this.state.projects];
     newArray.push(project);
     this.setState({
       ...this.state,
-      project: newArray
+      projects: newArray
     });
   };
 
@@ -53,12 +54,8 @@ export default class viewProjects extends Component {
   }
 
   render() {
+    // console.log(this.props.match.params.id)
     if (!!this.state.studio) {
-      // return (
-      //   <div>
-      //     <CreateProject getProject={this.getProject} urlId={this.props.match.params.id} ></CreateProject>
-      //   </div>
-      // );
       if (!!this.state.projects) {
         return (
           <React.Fragment>
@@ -69,7 +66,7 @@ export default class viewProjects extends Component {
             </div>
             <div>
               <CreateProject
-                getProject={this.getProject}
+                getProject={response => this.getProject(response)}
                 urlId={this.props.match.params.id}
               ></CreateProject>
             </div>

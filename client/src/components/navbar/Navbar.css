@@ -5,6 +5,7 @@
 	align-items: center;
 	height: 3rem;
 	/* position: fixed; */
+	background: linear-gradient(rgb(255, 255, 255),rgba(134, 199, 243, 0.411))
 }
 
 .nav-style a {
