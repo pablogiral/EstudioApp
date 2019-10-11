@@ -1,0 +1,12 @@
+.taskItemComponent {
+  margin-bottom: 1.5rem;
+}
+
+.taskItemComponent span {
+  margin-right: 2rem;
+}
+
+.taskItemComponent input[type=checkbox] {
+  /* height: 3rem;
+  width: 3rem; */
+}

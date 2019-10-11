@@ -86,7 +86,7 @@ router.post("/updateUser", (req, res, next) => {
 
 router.post("/deleteUser", (req, res, next) => {
   User.findByIdAndDelete(req.user._id)
-    .then(deletedUser => console.log(deletedUser))
+    .then(() => res.status(200).json({}))
     .catch(e => next(e));
 });
 

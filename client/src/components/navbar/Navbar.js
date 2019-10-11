@@ -8,12 +8,14 @@ import "./Navbar.css";
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedInUser: null };
+    this.state = { loggedInUser: {} };
     this.service = new AuthService();
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
+  static getDerivedStateFromProps(props, state) {
+    // console.log(props);
+    return (state.loggedInUser = props.userInSession);
+    // this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
   }
 
   handleLogout = e => {
@@ -21,31 +23,30 @@ class Navbar extends Component {
   };
 
   render() {
+    // console.log(this.state.loggedInUser);
     if (this.state.loggedInUser) {
       return (
         <nav className="nav-style">
-          
-            <div className="navbar-block-left">
-              <div className="navbar-element">
-                <Link to={"/viewcalendar"}>Calendar</Link>
-              </div>
-              <div className="navbar-element">
-                <Link to={"/viewstudios"}>View Studios</Link>
-              </div>
+          <div className="navbar-block-left">
+            <div className="navbar-element">
+              <Link to={"/viewcalendar"}>Calendar</Link>
             </div>
-            <div className="navbar-block-right">
-              <div className="navbar-element">
-                <Link to={"/profile"}>
-                  {this.state.loggedInUser.username}'s profile
-                </Link>
-              </div>
-              <div className="navbar-element">
-                <Link to={"/login"} onClick={this.handleLogout}>
-                  Logout
-                </Link>
-              </div>
+            <div className="navbar-element">
+              <Link to={"/viewstudios"}>Home</Link>
             </div>
-          
+          </div>
+          <div className="navbar-block-right">
+            <div className="navbar-element">
+              <Link to={"/profile"}>
+                {this.state.loggedInUser.username}'s profile
+              </Link>
+            </div>
+            <div className="navbar-element">
+              <Link to={"/login"} onClick={this.handleLogout}>
+                Logout
+              </Link>
+            </div>
+          </div>
         </nav>
       );
     } else {

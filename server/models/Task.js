@@ -7,7 +7,9 @@ const schemaName = new Schema(
     done: {
       type: Boolean,
       default: false
-    }
+    },
+    project: { type: Schema.Types.ObjectId, ref: "Projects" }
+
   },
   { timestamps: true }
 );

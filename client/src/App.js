@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AuthService from "./components/auth/AuthService";
+import UserService from "./components/contents/User/UserService";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Navbar from "./components/navbar/Navbar";
@@ -9,6 +10,7 @@ import "./App.css";
 import ViewStudios from "./components/contents/Studio/ViewStudios";
 import ViewCalendar from "./components/calendar/ViewCalendar";
 import ViewProjects from "./components/contents/Project/ViewProjects";
+import ViewTasks from './components/contents/Task/ViewTasks'
 import Profile from "./components/contents/User/Profile";
 export default class App extends Component {
   constructor() {
@@ -17,6 +19,7 @@ export default class App extends Component {
       loggedInUser: null
     };
     this.service = new AuthService();
+    this.serviceUser = new UserService();
 
     this.fetchUser();
   }
@@ -32,6 +35,15 @@ export default class App extends Component {
       this.setState({ loggedInUser: null });
     });
   };
+
+  deleteUser() {
+    let userDeletion = prompt("Type 'delete' to confirm");
+    if (userDeletion === "delete"){
+      this.serviceUser.deleteUser().then(() => {
+      this.setState({ loggedInUser: null });
+    });
+    }
+  }
 
   //este método vuelca la información del usuario y lo guarda en el state de app que siempre puedes revisitar
   fetchUser() {
@@ -72,10 +84,18 @@ export default class App extends Component {
                 render={() => <ViewCalendar />}
               />
               <Route exact path="/viewstudios" render={() => <ViewStudios />} />
-              <Route exact path="/profile" render={() => <Profile user={this.state.loggedInUser}/>} />
+              <Route
+                exact
+                path="/profile"
+                render={() => <Profile user={this.state.loggedInUser} deleteUser={() => this.deleteUser()} />}
+              />
               <Route
                 path="/viewprojects/:id"
                 render={props => <ViewProjects {...props} />}
+              />
+              <Route
+                path="/viewtasks/:id"
+                render={(props) => <ViewTasks {...props}/>}
               />
             </Switch>
           </div>
@@ -88,7 +108,7 @@ export default class App extends Component {
           <Redirect to="/login" />
 
           <div className="App">
-            <header>
+            <header className="header">
               <Navbar
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
