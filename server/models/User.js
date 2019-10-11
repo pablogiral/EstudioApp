@@ -9,7 +9,7 @@ const userSchema = new Schema(
     image: {
       type: String,
       default:
-        "https://www.pinclipart.com/picdir/middle/157-1578186_user-profile-default-image-png-clipart.png"
+        "https://icon-library.net/images/default-user-icon/default-user-icon-14.jpg"
     }
   },
   {

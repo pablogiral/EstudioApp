@@ -1,0 +1,33 @@
+.profileCard{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  border-radius: 20px;
+  /* border: 1px solid black; */
+  margin: 1.5rem 0;
+  padding: 2rem;
+  box-shadow: 2px 5px 10px 0px #a7a7a7a6;
+}
+
+.profileCard img {
+  width: 20rem;
+  border-radius: 50%;
+}
+
+.center {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.profileCard button {
+  border-radius: 20px;
+  outline: none;
+  margin: 1rem;
+  height: 2.5rem;
+  width: 10.2rem;
+  background: linear-gradient(rgb(255, 255, 255),rgba(134, 199, 243, 0.411));
+  box-shadow: 1px 1px 3px 0px #a7a7a7a6 ;
+}
+

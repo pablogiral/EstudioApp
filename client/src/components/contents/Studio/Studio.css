@@ -5,7 +5,7 @@
   align-items: center;
   border: 1px solid rgba(139, 139, 139, 0.5);
   background: rgba(250,250,250,0.6);
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   margin: 1rem;
   width: 18rem;
   height: 22rem;
@@ -14,7 +14,7 @@
 
 .studioCard img {
   width: 200px;
-  border-radius: 20px
+  border-radius: 50%;
 }
 
 .studioCard button {

@@ -3,7 +3,8 @@ import axios from "axios";
 class StudioService {
   constructor() {
     this.service = axios.create({
-      baseURL: "http://localhost:3001/api/studioroutes"
+      baseURL: "http://localhost:3001/api/studioroutes",
+      withCredentials: true
     });
   }
 
@@ -15,6 +16,11 @@ class StudioService {
 
   allStudios = () => {
     return this.service.get('/allStudios')
+    .then(response => response.data);
+  }
+
+  oneStudio = (studioID) => {
+    return this.service.get(`/getStudio/${studioID}`)
     .then(response => response.data);
   }
 }

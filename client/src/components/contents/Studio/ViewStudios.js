@@ -25,14 +25,18 @@ export default class ViewStudios extends Component {
     this.getAllStudios();
   }
 
-  async getAllStudios () {
-    const getStudios = await this.service.allStudios()
-    this.setState({...this.state, studios: getStudios.data})
+  getAllStudios () {
+    this.service.allStudios()
+    .then(allStudios=>{
+      // console.log(allStudios)
+      this.setState({...this.state, studios: allStudios})
+
+    })
   }
 
   render() {
-    // console.log(this.state.studios)
-    if (!this.state.studios.length) {
+    // console.log(this.state)
+    if (!Array.isArray(this.state.studios)) {
       return ( 
       <div>
         <CreateStudio getStudio={this.getStudio} />
@@ -47,7 +51,7 @@ export default class ViewStudios extends Component {
             this.state.studios.map(studio => <Studio key={studio._id} studio={studio} />)
           }
         </div>
-        <CreateStudio></CreateStudio>
+        <CreateStudio getStudio={this.getStudio}></CreateStudio>
         </React.Fragment>
       )
     }
