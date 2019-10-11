@@ -6,9 +6,10 @@ import Login from "./components/auth/Login";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
 // import Calendar from "./components/calendar/Calendar";
-import ViewStudios from "./components/contents/ViewStudios";
+import ViewStudios from "./components/contents/Studio/ViewStudios";
 import ViewCalendar from "./components/calendar/ViewCalendar";
-// import Example from "./components/contents/formTest";
+import ViewProjects from "./components/contents/Project/ViewProjects";
+import Profile from "./components/contents/User/Profile";
 export default class App extends Component {
   constructor() {
     super();
@@ -57,7 +58,7 @@ export default class App extends Component {
         <React.Fragment>
           <Redirect to="/viewstudios" />
           <div className="App">
-            <header className="App-header">
+            <header>
               <Navbar
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
@@ -71,6 +72,11 @@ export default class App extends Component {
                 render={() => <ViewCalendar />}
               />
               <Route exact path="/viewstudios" render={() => <ViewStudios />} />
+              <Route exact path="/profile" render={() => <Profile user={this.state.loggedInUser}/>} />
+              <Route
+                path="/viewprojects/:id"
+                render={props => <ViewProjects {...props} />}
+              />
             </Switch>
           </div>
         </React.Fragment>
@@ -82,7 +88,7 @@ export default class App extends Component {
           <Redirect to="/login" />
 
           <div className="App">
-            <header className="App-header">
+            <header>
               <Navbar
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
@@ -99,7 +105,6 @@ export default class App extends Component {
                 path="/login"
                 render={() => <Login getUser={this.getUser} />}
               />
-              
             </Switch>
           </div>
         </React.Fragment>

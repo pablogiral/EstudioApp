@@ -1,9 +1,34 @@
 .nav-style {
 	display: flex;
-	justify-content: space-evenly;
+	width: 100vw;
+	justify-content: space-around;
 	align-items: center;
+	height: 3rem;
+	/* position: fixed; */
 }
 
-.nav-style .header img {
-	margin-right: 20px;
+.nav-style a {
+	text-decoration: none;
+	color: black;
+	font-size: 1rem;
+}
+
+.navbar-block-left {
+	display: flex;
+	width: 50%;
+	justify-content: flex-start;
+	align-items: center;
+	height: inherit;
+}
+.navbar-block-right {
+	display: flex;
+	width: 50%;
+	justify-content: flex-end;
+	align-items: center;
+	height: inherit;
+}
+
+.navbar-element{
+	padding: 1rem;
+	margin: 0 1rem;
 }

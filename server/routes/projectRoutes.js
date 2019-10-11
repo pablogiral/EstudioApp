@@ -2,25 +2,39 @@ const express = require("express");
 // const passport = require('passport');
 const router = express.Router();
 const Projects = require("../models/Projects");
+const StudioModel = require('../models/StudioModel')
 
 router.post("/newProject", (req, res, next) => {
-  const { name } = req.body;
-
-  if (!name) {
+  const { projectname, bandname, belongsTo } = req.body.projectName;
+  console.log(projectname);
+  console.log(bandname);
+  if (!projectname) {
     next(new Error("You must provide a name"));
   }
 
   Projects.create({
-    name: name,
-    musicians: req.body.musicians
+    name: projectname,
+    bandname: bandname,
+    belongsTo: belongsTo
+
   })
-    .then(saveProject => res.json(saveProject))
+    .then((saveProject) => {
+      StudioModel.findByIdAndUpdate(belongsTo, {$push: { projects: saveProject._id } }, {new:true})
+      .then(() => res.json({}))
+    })
+    .then(saveProject => res.json({saveProject}))
     .catch(e => next(e));
 });
 
-router.get("/allProjects", (req, res, next) => {
-  Projects.find()
-    .then(allProjects => res.json(allProjects))
+router.get("/allProjects/:id", (req, res, next) => {
+  console.log(req.params.id)
+  Projects.find({
+    belongsTo: req.params.id
+  })
+    .then(allProjects => {
+      console.log(allProjects)
+      // res.json({allProjects})
+      })
     .catch(e => next(e));
 });
 

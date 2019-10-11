@@ -100,6 +100,9 @@ app.use('/api/studioroutes', studioRoutes);
 
 const projectRoutes = require('./routes/projectRoutes');
 app.use('/api/projectRoutes', projectRoutes);
+
+const taskRoutes = require('./routes/taskRoutes');
+app.use('/api/taskRoutes', taskRoutes);
       
 
 module.exports = app;

@@ -1,5 +1,5 @@
 const express = require("express");
-// const passport = require('passport');
+const passport = require("passport");
 const router = express.Router();
 const StudioModel = require("../models/StudioModel");
 // const mongoose = require("mongoose");
@@ -37,6 +37,7 @@ router.post("/associateStudioProject", (req, res, next) => {
 
 // localhost:3000/api/studios/allStudios/useridDePabloODeDani
 router.get("/allStudios", (req, res, next) => {
+  console.log(req.user._id);
   StudioModel.find({
     owner: req.session.passport.user
   })
@@ -51,6 +52,7 @@ router.get("/allStudios", (req, res, next) => {
 router.get("/getStudio/:studioID", (req, res, next) => {
   const id = req.params.studioID;
   StudioModel.findById(id)
+    .populate("projects")
     .then(studio => res.json(studio))
     .catch(e => next(e));
 });
