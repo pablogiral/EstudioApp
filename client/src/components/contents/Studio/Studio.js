@@ -10,7 +10,7 @@ export default class Studio extends Component {
       <div className="studioCard">
         <img src={this.props.studio.studioimage} alt={this.props.studio.studioname}/>
         <h2>{this.props.studio.studioname}</h2>
-        <h6>Open projects: {this.props.studio.projects.length} </h6>
+        <h4>Open projects: {this.props.studio.projects.length} </h4>
         <Link to={`/viewprojects/${this.props.studio._id}`}><button>See projects</button></Link>
       </div>
     );

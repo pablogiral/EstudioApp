@@ -5,6 +5,7 @@ import Project from "./Project";
 import CreateProject from "./CreateProject";
 import "./viewProjects.css";
 import SearchBar from "../SearchBar/SearchBar";
+import { Link } from "react-router-dom"
 
 export default class viewProjects extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ export default class viewProjects extends Component {
   updateSearch(e) {
     let search = e.target.value;
     let projectsSearch = [...this.state.projectsClean];
-    console.log()
+    // console.log()
     this.setState({
       ...this.state,
       projects: projectsSearch.filter(project =>
@@ -70,7 +71,7 @@ export default class viewProjects extends Component {
   }
 
   render() {
-    // console.log(this.state)
+    console.log(this.state.projects)
     if (!!this.state.studio) {
       if (!!this.state.projects) {
         return (
@@ -86,6 +87,9 @@ export default class viewProjects extends Component {
                 getProject={response => this.getProject(response)}
                 urlId={this.props.match.params.id}
               ></CreateProject>
+            </div>
+            <div>
+              <Link to={"/viewstudios"}>Back to studios</Link>
             </div>
           </React.Fragment>
         );

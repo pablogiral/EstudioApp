@@ -42,6 +42,11 @@ router.get("/allTasks", (req, res, next) => {
     });
 });
 
+// router.post("/deleteTask/:id", (req, res, next) => {
+//   Task.findByIdAndDelete(req.body._id)
+
+// })
+
 router.get("/tasks/done/:done", (req, res, next) => {
   Task.find({ done: req.params.done })
     .select({

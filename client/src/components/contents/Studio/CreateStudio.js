@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StudioService from "./StudioService";
-
+import './CreateStudio.css'
 export default class CreateStudio extends Component {
   constructor(props) {
     super(props);
@@ -41,26 +41,25 @@ export default class CreateStudio extends Component {
   render() {
     // console.log(this.state)
     return (
-      <div>
-        <div>
-          <h3>Create your studio:</h3>
+      <div className="createStudio">
+        <h3>Create your studio:</h3>
 
-          <form onSubmit={this.handleFormSubmit}>
-            <fieldset>
-              <label>Studio name:</label>
-              <input
-                type="text"
-                name="studioname"
-                value={this.state.studioname}
-                onChange={e => this.handleChange(e)}
-              />
-            </fieldset>
+        <form className="create-form" onSubmit={this.handleFormSubmit}>
+          <fieldset className="create-form">
+            
+            <input
+              type="text"
+              name="studioname"
+              placeholder="Enter your studio's name"
+              value={this.state.studioname}
+              onChange={e => this.handleChange(e)}
+            />
+          </fieldset>
 
-            <input type="submit" value="create" />
-          </form>
+          <input type="submit" value="create" />
+        </form>
 
-          <h1>{this.state.error ? "Error" : ""}</h1>
-        </div>
+        <h1>{this.state.error ? "Error" : ""}</h1>
       </div>
     );
   }

@@ -10,7 +10,7 @@
   width: 18rem;
   height: 22rem;
   padding: 1rem;
-  box-shadow: 2px 5px 10px 0px #a7a7a7a6 
+  box-shadow: 2px 5px 10px 0px #a7a7a7a6;
 }
 
 /* .studioCard:hover{
@@ -30,6 +30,8 @@
   margin: 1rem;
   height: 2.5rem;
   width: 10.2rem;
-  background: linear-gradient(rgb(255, 255, 255),rgba(134, 199, 243, 0.411));
-  box-shadow: 1px 1px 3px 0px #a7a7a7a6 
+  background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
+  box-shadow: 1px 1px 3px 0px #a7a7a7a6;
+  font-size: 1.2rem;
+  font-weight: 100;
 }

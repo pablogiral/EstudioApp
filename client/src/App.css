@@ -4,10 +4,11 @@
 
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-header {
-  background-color: #f3f3f3;
+  /* background-color: #f3f3f3; */
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
@@ -17,16 +18,31 @@
   color: black;
 }
 
-
-
-a {
-  color: blue;
-  cursor: pointer;
+h1 {
+  font-size: 2.5rem;
+  font-weight: 100;
 }
 
-fieldset {
+h2 {
+  font-size: 2.2rem;
+  font-weight: 100;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 100;
+}
+
+h4 {
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+
+
+
+/* fieldset {
   border: 0;
-}
+} */
 
 @keyframes App-logo-spin {
   from {

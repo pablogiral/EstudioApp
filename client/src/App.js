@@ -68,7 +68,7 @@ export default class App extends Component {
       //en este caso mostramos los contenidos ya que hay usuario
       return (
         <React.Fragment>
-          <Redirect to="/viewstudios" />
+          <Redirect to="/home" />
           <div className="App">
             <header>
               <Navbar
@@ -84,6 +84,8 @@ export default class App extends Component {
                 render={() => <ViewCalendar />}
               />
               <Route exact path="/viewstudios" render={() => <ViewStudios />} />
+              <Route exact path="/home" render={() => <ViewStudios />} />
+              <Route exact path="/" render={() => <ViewStudios />} />
               <Route
                 exact
                 path="/profile"

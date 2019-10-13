@@ -5,14 +5,29 @@
 	align-items: center;
 	height: 3rem;
 	/* position: fixed; */
-	background: linear-gradient(rgb(255, 255, 255),rgba(134, 199, 243, 0.411))
+	background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
 }
 
 .nav-style a {
 	text-decoration: none;
-	color: black;
-	font-size: 1rem;
+	/* color: #fff; */
+	color: #054950;
+	font-size: 1.2rem;
+	font-weight: 100;
+	transition: all 0.3s;
 }
+
+.nav-style a:hover {
+	color: #fff;
+	/* font-weight: 300; */
+}
+
+.nav-style img{
+	height: 2.8rem;
+	/* margin-left: 1rem; */
+	padding: 0.2rem 1rem;
+}
+
 
 .navbar-block-left {
 	display: flex;

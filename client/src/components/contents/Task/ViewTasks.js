@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Task from './Task'
 import axios from "axios";
-
+import { Link } from "react-router-dom"
 export default class ViewTasks extends Component {
   constructor(props) {
     super(props);
@@ -66,7 +66,7 @@ export default class ViewTasks extends Component {
       });
   }
   render() {
-    // console.log(this.state)
+    console.log(this.props)
     return (
       <div className="tasks">
         <header>
@@ -125,6 +125,9 @@ export default class ViewTasks extends Component {
         {this.state.tasks.filter(task => task.done).length === 0 && (
           <h1>No tasks done</h1>
         )}
+        <div>
+          <Link to={`/viewprojects/${this.props.project}`}>Back to projects</Link>
+        </div>
       </div>
       // <h1>hola</h1>
     );
