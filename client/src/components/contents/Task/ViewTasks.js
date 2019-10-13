@@ -12,7 +12,8 @@ export default class ViewTasks extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/api/taskRoutes/tasks").then(tasksFromBackend => {
+    axios.get("http://localhost:3001/api/taskRoutes/allTasks").then(tasksFromBackend => {
+      console.log(tasksFromBackend.data._id)
       this.setState({
         ...this.state,
         tasks: tasksFromBackend.data
@@ -65,7 +66,7 @@ export default class ViewTasks extends Component {
       });
   }
   render() {
-    console.log(this.props.match.params.id)
+    console.log(this.props.match.params)
     return (
       <div className="tasks">
         <header>
