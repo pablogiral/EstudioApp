@@ -4,12 +4,14 @@ import StudioService from "./../Studio/StudioService";
 import Project from "./Project";
 import CreateProject from "./CreateProject";
 import "./viewProjects.css";
+import SearchBar from "../SearchBar/SearchBar";
 
 export default class viewProjects extends Component {
   constructor(props) {
     super(props);
     this.state = {
       projects: [],
+      projectsClean: [],
       studio: {}
     };
     this.service = new ProjectService();
@@ -22,7 +24,8 @@ export default class viewProjects extends Component {
     newArray.push(project);
     this.setState({
       ...this.state,
-      projects: newArray
+      projects: newArray,
+      projectsClean: newArray
     });
   };
 
@@ -48,17 +51,31 @@ export default class viewProjects extends Component {
     this.setState({
       ...this.state,
       studio: studio,
+      projectsClean: studio.projects,
       projects: studio.projects
       // projects: allProjects
     });
   }
 
+  updateSearch(e) {
+    let search = e.target.value;
+    let projectsSearch = [...this.state.projectsClean];
+    console.log()
+    this.setState({
+      ...this.state,
+      projects: projectsSearch.filter(project =>
+        project.name.toLowerCase().includes(search.toLowerCase())
+      )
+    });
+  }
+
   render() {
-    // console.log(this.props.match.params.id)
+    // console.log(this.state)
     if (!!this.state.studio) {
       if (!!this.state.projects) {
         return (
           <React.Fragment>
+            <SearchBar updateSearchFormData={e => this.updateSearch(e)}></SearchBar>
             <div className="projectView">
               {this.state.projects.map(project => (
                 <Project key={project._id} project={project}></Project>

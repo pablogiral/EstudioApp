@@ -13,6 +13,11 @@
   box-shadow: 2px 5px 10px 0px #a7a7a7a6 
 }
 
+/* .studioCard:hover{
+  background: #383838a6;
+  
+} */
+
 .studioCard img {
   width: 11rem;
   height: 11rem;

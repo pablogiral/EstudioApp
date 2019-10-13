@@ -35,7 +35,7 @@ export default class ViewStudios extends Component {
   }
 
   render() {
-    // console.log(this.state)
+    console.log(this.state)
     if (!Array.isArray(this.state.studios)) {
       return ( 
       <div>
