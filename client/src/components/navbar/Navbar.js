@@ -28,9 +28,12 @@ class Navbar extends Component {
       return (
         <nav className="nav-style">
           <div className="navbar-block-left">
-            <div className="navbar-element">
-              <Link to={"/viewcalendar"}>Calendar</Link>
+            <div>
+              <img src="https://res.cloudinary.com/dmzi2js9s/image/upload/v1570991057/Studio%20Manager/Studio_manager_2_d7ssm2.png" alt="studio manager logo"/>
             </div>
+            {/* <div className="navbar-element">
+              <Link to={"/viewcalendar"}>Calendar</Link>
+            </div> */}
             <div className="navbar-element">
               <Link to={"/viewstudios"}>Home</Link>
             </div>
@@ -53,14 +56,19 @@ class Navbar extends Component {
       return (
         <div>
           <nav className="nav-style">
-            <ul>
-              <li>
+            <div className="navbar-block-left">
+            <div>
+              <img src="https://res.cloudinary.com/dmzi2js9s/image/upload/v1570991057/Studio%20Manager/Studio_manager_2_d7ssm2.png" alt="studio manager logo"/>
+            </div>
+            </div>
+            <div className="navbar-block-right">
+              <div className="navbar-element">
                 <Link to="/signup">Signup</Link>
-              </li>
-              <li>
+              </div>
+              <div className="navbar-element">
                 <Link to="/login">Login</Link>
-              </li>
-            </ul>
+              </div>
+            </div>
           </nav>
         </div>
       );

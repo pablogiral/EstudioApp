@@ -35,7 +35,6 @@ router.post("/associateStudioProject", (req, res, next) => {
     .catch(e => next(e));
 });
 
-// localhost:3000/api/studios/allStudios/useridDePabloODeDani
 router.get("/allStudios", (req, res, next) => {
   console.log(req.user._id);
   StudioModel.find({

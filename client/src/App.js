@@ -12,6 +12,7 @@ import ViewCalendar from "./components/calendar/ViewCalendar";
 import ViewProjects from "./components/contents/Project/ViewProjects";
 import ViewTasks from './components/contents/Task/ViewTasks'
 import Profile from "./components/contents/User/Profile";
+import EditProfile from './components/contents/User/EditProfile';
 export default class App extends Component {
   constructor() {
     super();
@@ -68,7 +69,7 @@ export default class App extends Component {
       //en este caso mostramos los contenidos ya que hay usuario
       return (
         <React.Fragment>
-          <Redirect to="/viewstudios" />
+          <Redirect to="/home" />
           <div className="App">
             <header>
               <Navbar
@@ -84,11 +85,14 @@ export default class App extends Component {
                 render={() => <ViewCalendar />}
               />
               <Route exact path="/viewstudios" render={() => <ViewStudios />} />
+              <Route exact path="/home" render={() => <ViewStudios />} />
+              <Route exact path="/" render={() => <ViewStudios />} />
               <Route
                 exact
                 path="/profile"
                 render={() => <Profile user={this.state.loggedInUser} deleteUser={() => this.deleteUser()} />}
               />
+              <Route exact path="/editprofile" render={() => <EditProfile user={this.state.loggedInUser}/>} />
               <Route
                 path="/viewprojects/:id"
                 render={props => <ViewProjects {...props} />}
