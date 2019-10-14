@@ -21,7 +21,7 @@ export default class ViewTasks extends Component {
     //   });
     // });
 
-    axios.get(`http://localhost:3001/api/taskRoutes/projectTasks/${this.props.match.params.id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/taskRoutes/projectTasks/${this.props.match.params.id}`)
     .then(tasksFromBackend => {
       console.log(tasksFromBackend.data)
       this.setState({
@@ -35,7 +35,7 @@ export default class ViewTasks extends Component {
     if (this.state.newTask === "") return;
 
     axios
-      .post("http://localhost:3001/api/taskRoutes/newTask", { name: this.state.newTask, projectID: this.props.match.params.id })
+      .post(`${process.env.REACT_APP_API_URL}/api/taskRoutes/newTask`, { name: this.state.newTask, projectID: this.props.match.params.id })
       .then(tasksFromBackend => {
         this.setState({
           ...this.state,
@@ -60,7 +60,7 @@ export default class ViewTasks extends Component {
     let taskToUpdateFromState = tasks.find(task => task._id === taskToUpdate._id);
     let newDoneState = !taskToUpdateFromState.done
 
-    let URL = `http://localhost:3001/api/taskRoutes/task/${taskToUpdate._id}/done/${newDoneState}/project/${this.props.match.params.id}`
+    let URL = `${process.env.REACT_APP_API_URL}/api/taskRoutes/task/${taskToUpdate._id}/done/${newDoneState}/project/${this.props.match.params.id}`
 
     // console.log(URL)
     axios

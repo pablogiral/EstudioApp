@@ -3,7 +3,7 @@ import axios from "axios";
 class StudioService {
   constructor() {
     this.service = axios.create({
-      baseURL: "http://localhost:3001/api/studioroutes",
+      baseURL: `${process.env.REACT_APP_API_URL}/api/studioroutes`,
       withCredentials: true
     });
   }
