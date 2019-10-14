@@ -61,7 +61,7 @@ app.use(require('node-sass-middleware')({
       
 
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images')));
+app.use(favicon(path.join(__dirname, 'public')));
 
 
 hbs.registerHelper('ifUndefined', (value, options) => {
