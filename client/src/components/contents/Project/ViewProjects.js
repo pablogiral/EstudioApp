@@ -71,7 +71,7 @@ export default class viewProjects extends Component {
   }
 
   render() {
-    console.log(this.state.projects)
+    // console.log(this.state.projects)
     if (!!this.state.studio) {
       if (!!this.state.projects) {
         return (

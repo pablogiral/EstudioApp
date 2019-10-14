@@ -11,12 +11,15 @@
   height: 22rem;
   padding: 1rem;
   box-shadow: 2px 5px 10px 0px #a7a7a7a6;
+  transition: all 0.5s
 }
 
-/* .studioCard:hover{
-  background: #383838a6;
-  
-} */
+.studioCard:hover{
+  /* background: #383838a6; */
+  transform: scale(1.01, 1.01);
+  transform: translate(0, 10px);
+  box-shadow: 1px 1px 50px 5px rgba(0,0,0,0.25);
+}
 
 .studioCard img {
   width: 11rem;
@@ -35,3 +38,4 @@
   font-size: 1.2rem;
   font-weight: 100;
 }
+

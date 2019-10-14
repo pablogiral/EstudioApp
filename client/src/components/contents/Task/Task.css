@@ -1,12 +1,18 @@
 .taskItemComponent {
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 0.5rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  width: 50%;
+  height: 2rem;
+  background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
+  font-size: 1.2rem;
+  font-weight: 100;
 }
 
 .taskItemComponent span {
-  margin-right: 2rem;
+  /* margin-right: 1rem; */
 }
 
-.taskItemComponent input[type=checkbox] {
-  /* height: 3rem;
-  width: 3rem; */
-}

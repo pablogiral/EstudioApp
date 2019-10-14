@@ -12,6 +12,7 @@ import ViewCalendar from "./components/calendar/ViewCalendar";
 import ViewProjects from "./components/contents/Project/ViewProjects";
 import ViewTasks from './components/contents/Task/ViewTasks'
 import Profile from "./components/contents/User/Profile";
+import EditProfile from './components/contents/User/EditProfile';
 export default class App extends Component {
   constructor() {
     super();
@@ -91,6 +92,7 @@ export default class App extends Component {
                 path="/profile"
                 render={() => <Profile user={this.state.loggedInUser} deleteUser={() => this.deleteUser()} />}
               />
+              <Route exact path="/editprofile" render={() => <EditProfile user={this.state.loggedInUser}/>} />
               <Route
                 path="/viewprojects/:id"
                 render={props => <ViewProjects {...props} />}

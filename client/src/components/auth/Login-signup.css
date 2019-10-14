@@ -1,0 +1,53 @@
+.login-signup{
+  padding: 2rem;
+}
+
+.login-signup h3 {
+  margin: 2rem;
+}
+
+.LSlabel {
+  font-size: 1.2rem;
+  font-weight: 100;
+  margin-right: 1rem;
+}
+
+.LSinput {
+  width: 15rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  font-weight: 100;
+  border-radius: 0.3rem;
+  outline: none;
+  margin: 1rem;
+}
+
+.LSbutton{
+  border-radius: 0.7rem;
+  outline: none;
+  margin: 1rem;
+  height: 2.5rem;
+  width: 10.2rem;
+  background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
+  box-shadow: 1px 1px 3px 0px #789a9fa6;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.LStext {
+  font-size: 1.2rem;
+  font-weight: 100;
+  margin-top: 1rem;
+  display: block;
+}
+
+.LStextLink {
+  text-decoration: none;
+}
+.LStextLink:visited{
+  text-decoration: none;
+}
+
+.align {
+  margin-left: 44px;
+}

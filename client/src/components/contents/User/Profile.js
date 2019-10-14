@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Moment from "moment"
 import "./Profile.css";
 
 export default class Profile extends Component {
@@ -18,9 +20,9 @@ export default class Profile extends Component {
           <div>
             <h1>Hello {this.state.user.username}!</h1>
             <h3>email: {this.state.user.email}</h3>
-            <h3>User since: {this.state.user.created_at}</h3>
+            <h3>User since: {Moment(this.state.user.created_at).format('yyyy/mm/dd')}</h3>
             <div>
-              <button>Edit your profile</button>
+              <Link to={'/editprofile'}><button props={this.state.user}>Edit your profile</button></Link>
               <button onClick={() => this.props.deleteUser()}>
                 Delete your profile
               </button>

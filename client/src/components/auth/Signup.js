@@ -1,6 +1,8 @@
 // auth/Signup.js
 import React, { Component } from 'react';
-import AuthService from './AuthService'
+import { Link } from 'react-router-dom';
+import AuthService from './AuthService';
+import "./Login-signup.css";
 
 
 class Signup extends Component {
@@ -47,29 +49,31 @@ class Signup extends Component {
 
   render() {
     return(
-      <div>
+      <div className="login-signup">
         <h3>Create your account:</h3>
 
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>
-            <label>Username:</label>
-            <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+            <label className="LSlabel">Username:</label>
+            <input className="LSinput" type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+          </fieldset>
+
+          <fieldset className="align">
+            <label className="LSlabel">Email:</label>
+            <input className="LSinput" type="text" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
           </fieldset>
 
           <fieldset>
-            <label>Email:</label>
-            <input type="text" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
-          </fieldset>
-
-          <fieldset>
-            <label>Password:</label>
-            <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+            <label className="LSlabel">Password:</label>
+            <input className="LSinput" type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           </fieldset>
           
-          <input type="submit" value="Sign up" />
+          <input className="LSbutton" type="submit" value="Sign up" />
         </form>
 
         <h1>{this.state.error ? 'Error' : ''}</h1>
+
+        <span className="LStext">Allready a  user? <Link className="LStextLink" to="/login">login</Link></span>
       </div>
     )
   }

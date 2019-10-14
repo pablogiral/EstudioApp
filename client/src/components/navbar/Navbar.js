@@ -31,9 +31,9 @@ class Navbar extends Component {
             <div>
               <img src="https://res.cloudinary.com/dmzi2js9s/image/upload/v1570991057/Studio%20Manager/Studio_manager_2_d7ssm2.png" alt="studio manager logo"/>
             </div>
-            <div className="navbar-element">
+            {/* <div className="navbar-element">
               <Link to={"/viewcalendar"}>Calendar</Link>
-            </div>
+            </div> */}
             <div className="navbar-element">
               <Link to={"/viewstudios"}>Home</Link>
             </div>

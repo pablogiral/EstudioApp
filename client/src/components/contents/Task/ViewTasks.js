@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Task from './Task'
 import axios from "axios";
 import { Link } from "react-router-dom"
+import './ViewTasks.css'
 export default class ViewTasks extends Component {
   constructor(props) {
     super(props);
@@ -12,11 +13,20 @@ export default class ViewTasks extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/api/taskRoutes/allTasks/`).then(tasksFromBackend => {
-      // console.log(tasksFromBackend.data._id)
+    // axios.get(`http://localhost:3001/api/taskRoutes/allTasks/`).then(tasksFromBackend => {
+    //   // console.log(tasksFromBackend.data._id)
+    //   this.setState({
+    //     ...this.state,
+    //     tasks: tasksFromBackend.data
+    //   });
+    // });
+
+    axios.get(`http://localhost:3001/api/taskRoutes/projectTasks/${this.props.match.params.id}`)
+    .then(tasksFromBackend => {
+      console.log(tasksFromBackend.data)
       this.setState({
         ...this.state,
-        tasks: tasksFromBackend.data
+        tasks: tasksFromBackend.data.tasks
       });
     });
   }
@@ -25,11 +35,11 @@ export default class ViewTasks extends Component {
     if (this.state.newTask === "") return;
 
     axios
-      .post("http://localhost:3001/api/taskRoutes/newTask", { name: this.state.newTask })
+      .post("http://localhost:3001/api/taskRoutes/newTask", { name: this.state.newTask, projectID: this.props.match.params.id })
       .then(tasksFromBackend => {
         this.setState({
           ...this.state,
-          tasks: tasksFromBackend.data,
+          tasks: tasksFromBackend.data.tasks,
           newTask: ""
         });
       });
@@ -50,7 +60,7 @@ export default class ViewTasks extends Component {
     let taskToUpdateFromState = tasks.find(task => task._id === taskToUpdate._id);
     let newDoneState = !taskToUpdateFromState.done
 
-    let URL = `http://localhost:3001/api/taskRoutes/task/${taskToUpdate._id}/done/${newDoneState}`
+    let URL = `http://localhost:3001/api/taskRoutes/task/${taskToUpdate._id}/done/${newDoneState}/project/${this.props.match.params.id}`
 
     // console.log(URL)
     axios
@@ -61,12 +71,11 @@ export default class ViewTasks extends Component {
         // this re-updates the state with updated object, hence updating the checkbox
         this.setState({
           ...this.state,
-          tasks: allTasks.data
+          tasks: allTasks.data.tasks
         });
       });
   }
   render() {
-    console.log(this.props)
     return (
       <div className="tasks">
         <header>
@@ -80,11 +89,11 @@ export default class ViewTasks extends Component {
         </header>
         {this.state.tasks.filter(task => !task.done).length > 0 && (
           <div>
-            <h1>
+            <h1 className="task-list">
               Total tasks to do -{" "}
               {this.state.tasks.filter(task => !task.done).length}
             </h1>
-            <section>
+            <section className="task-list" >
               {this.state.tasks
                 .filter(task => !task.done)
                 .map(task => {
@@ -102,11 +111,11 @@ export default class ViewTasks extends Component {
 
         {this.state.tasks.filter(task => task.done).length > 0 && (
           <div>
-            <h1>
+            <h1 className="task-list">
               Total tasks done -{" "}
               {this.state.tasks.filter(task => task.done).length}
             </h1>
-            <section>
+            <section className="task-list">
               {this.state.tasks
                 .filter(task => task.done)
                 .map(task => {
@@ -126,7 +135,7 @@ export default class ViewTasks extends Component {
           <h1>No tasks done</h1>
         )}
         <div>
-          <Link to={`/viewprojects/${this.props.project}`}>Back to projects</Link>
+          <Link to={`/viewprojects/${this.props.match.params.id}`}>Back to projects</Link>
         </div>
       </div>
       // <h1>hola</h1>
