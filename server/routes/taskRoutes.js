@@ -1,18 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const Task = require("../models/Task");
+const Project = require('../models/Projects')
 
 router.post("/newTask", (req, res, next) => {
+  console.log("ESTA",req.body)
   Task.create({
     name: req.body.name
-  }).then(() => {
-    res.redirect("/api/taskRoutes/allTasks");
+  }).then((newTask) => {
+    Project.findByIdAndUpdate(req.body.projectID, {$push: {tasks: newTask._id}}, {new: true})
+    .then(updatedProject => {
+      console.log(updatedProject)
+      res.redirect(`/api/taskRoutes/projectTasks/${req.body.projectID}`);
+    })
     // .then(newTask => {
     // res.json(newTask);
   });
 });
 
-router.get("/task/:id/done/:done", (req, res, next) => {
+router.get("/task/:id/done/:done/project/:projectID", (req, res, next) => {
   let payload;
 
   if (req.params.done === "false") {
@@ -23,7 +29,7 @@ router.get("/task/:id/done/:done", (req, res, next) => {
 
   Task.findByIdAndUpdate(req.params.id, payload)
   .then(() => {
-    res.redirect("/api/taskRoutes/allTasks");
+    res.redirect("/api/taskRoutes/projectTasks/" + req.params.projectID);
   })
   .catch(e=>next(e))
 });
@@ -41,6 +47,14 @@ router.get("/allTasks", (req, res, next) => {
       res.json(allTasks);
     });
 });
+
+router.get("/projectTasks/:id", (req, res, next) => {
+  Project.findById(req.params.id)
+  .populate("tasks")
+  .then( foundProject => {
+    res.json(foundProject)
+  })
+})
 
 // router.post("/deleteTask/:id", (req, res, next) => {
 //   Task.findByIdAndDelete(req.body._id)

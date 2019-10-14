@@ -34,7 +34,7 @@ const app = express();
 
 // Middleware Setup
 var whitelist = [
-  'http://localhost:3000'
+  'http://localhost:3000','https://miapp.herokuapp.com'
 ];
 var corsOptions = {
   origin: function(origin, callback){
@@ -60,10 +60,8 @@ app.use(require('node-sass-middleware')({
 }));
       
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'images')));
 
 
 hbs.registerHelper('ifUndefined', (value, options) => {
@@ -103,6 +101,8 @@ app.use('/api/projectRoutes', projectRoutes);
 
 const taskRoutes = require('./routes/taskRoutes');
 app.use('/api/taskRoutes', taskRoutes);
-      
+
+
+app.use((req, res) => {     res.sendFile(__dirname + "/public/index.html");    });
 
 module.exports = app;
