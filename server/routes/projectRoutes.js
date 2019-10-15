@@ -2,12 +2,13 @@ const express = require("express");
 // const passport = require('passport');
 const router = express.Router();
 const Projects = require("../models/Projects");
+const Task = require("../models/Task");
 const StudioModel = require("../models/StudioModel");
 
 router.post("/newProject", (req, res, next) => {
   const { projectname, bandname, belongsTo } = req.body.projectName;
-  console.log(projectname);
-  console.log(bandname);
+  // console.log(projectname);
+  // console.log(bandname);
   if (!projectname) {
     next(new Error("You must provide a name"));
   }
@@ -17,6 +18,7 @@ router.post("/newProject", (req, res, next) => {
     bandname: bandname,
     belongsTo: belongsTo
   })
+    // .populate("tasks")
     .then((saveProject) => {
       StudioModel.findByIdAndUpdate(
         belongsTo,
@@ -28,7 +30,7 @@ router.post("/newProject", (req, res, next) => {
 });
 
 router.get("/allProjects/:id", (req, res, next) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
   Projects.find({
     belongsTo: req.params.id
   })

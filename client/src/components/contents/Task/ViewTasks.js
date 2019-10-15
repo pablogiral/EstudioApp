@@ -13,17 +13,10 @@ export default class ViewTasks extends Component {
   }
 
   componentDidMount() {
-    // axios.get(`http://localhost:3001/api/taskRoutes/allTasks/`).then(tasksFromBackend => {
-    //   // console.log(tasksFromBackend.data._id)
-    //   this.setState({
-    //     ...this.state,
-    //     tasks: tasksFromBackend.data
-    //   });
-    // });
-
+    
     axios.get(`${process.env.REACT_APP_API_URL}/api/taskRoutes/projectTasks/${this.props.match.params.id}`)
     .then(tasksFromBackend => {
-      console.log(tasksFromBackend.data)
+    
       this.setState({
         ...this.state,
         tasks: tasksFromBackend.data.tasks
@@ -62,7 +55,7 @@ export default class ViewTasks extends Component {
 
     let URL = `${process.env.REACT_APP_API_URL}/api/taskRoutes/task/${taskToUpdate._id}/done/${newDoneState}/project/${this.props.match.params.id}`
 
-    // console.log(URL)
+   
     axios
       .get(
         URL
@@ -75,6 +68,17 @@ export default class ViewTasks extends Component {
         });
       });
   }
+
+  deleteTask(taskToDelete) {
+    let tasks = [...this.state.tasks];
+    let taskToDeleteFromState  = tasks.filter(task => task._id !== taskToDelete._id);
+    this.setState({
+      ...this.state,
+      tasks: taskToDeleteFromState
+    })
+    axios.get(`${process.env.REACT_APP_API_URL}/api/taskRoutes/deleteTask/${taskToDelete._id}`)
+  }
+  
   render() {
     return (
       <div className="tasks">
@@ -102,6 +106,7 @@ export default class ViewTasks extends Component {
                       key={task._id}
                       task={task}
                       updateTaskValue={task => this.updateTaskValue(task)}
+                      deleteTask={task=> this.deleteTask(task)}
                     ></Task>
                   );
                 })}

@@ -6,7 +6,6 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
-// import Calendar from "./components/calendar/Calendar";
 import ViewStudios from "./components/contents/Studio/ViewStudios";
 import ViewCalendar from "./components/calendar/ViewCalendar";
 import ViewProjects from "./components/contents/Project/ViewProjects";
@@ -63,7 +62,7 @@ export default class App extends Component {
   }
 
   render() {
-    // console.log(this.state)
+    
     //aqui hacemos rendering condicional dependiendo de si tenemos un usuario logeado o no
     if (this.state.loggedInUser) {
       //en este caso mostramos los contenidos ya que hay usuario

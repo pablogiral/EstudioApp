@@ -75,6 +75,7 @@ router.get("/currentuser", (req, res, next) => {
 });
 
 router.post("/updateUser", (req, res, next) => {
+  console.log(req.body.username, req.body.email)
   User.findOneAndUpdate(
     req.session.passport.user,
     { username: req.body.username, email: req.body.email },

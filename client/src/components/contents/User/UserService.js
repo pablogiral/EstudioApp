@@ -12,6 +12,13 @@ class UserService {
     return this.service.post('/deleteUser')
     .then(response => response.data);
   }
+
+  editUser = (username, email) => {
+    return this.service.post('/updateUser', {username, email})
+    .then(response => response.data);
+  }
+
+
 }
 
 export default UserService;

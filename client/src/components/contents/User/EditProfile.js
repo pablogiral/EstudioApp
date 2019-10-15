@@ -1,37 +1,39 @@
 import React, { Component } from "react";
+import UserService from "./UserService";
 
 export default class EditProfile extends Component {
   constructor(props){
     super(props);
     this.state={
       user: this.props.user,
-      newName: "",
-      newEmail: "",
+      newName: this.props.user.username,
+      newEmail: this.props.user.email,
+      error: null,
+      success: false
     }
-    // console.log(this.state)
+    this.service = new UserService()
+    
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
+    const username = this.state.newName;
+    const email = this.state.newEmail;
+
+   
 
     this.service
-      .login(username, password)
+      .editUser(username, email)
       .then(response => {
         this.setState({
-          username: username,
-          password: password,
-          error: false
+          newName: username,
+          newEmail: email,
+          success: true,
         });
-
-        this.props.getUser(response);
       })
       .catch(error => {
         this.setState({
-          username: username,
-          password: password,
-          error: true
+          error: true,
         });
       });
   };
@@ -42,7 +44,8 @@ export default class EditProfile extends Component {
   };
 
   render() {
-    console.log(this.state.newEmail)
+    // console.log(this.state.newEmail)
+    // console.log(this.props.user.username)
     return (
       <div>
         <h3>Edit your profile:</h3>
@@ -52,7 +55,7 @@ export default class EditProfile extends Component {
             <label>Username:</label>
             <input
               type="text"
-              placeholder={this.state.user.username}
+              // placeholder={this.state.user.username}
               name="newName"
               value={this.state.newName}
               onChange={e => this.handleChange(e)}
@@ -63,7 +66,7 @@ export default class EditProfile extends Component {
             <label>Email:</label>
             <input
               type="text"
-              placeholder={this.state.user.email}
+              // placeholder={this.state.user.email}
               name="newEmail"
               value={this.state.newEmail}
               onChange={e => this.handleChange(e)}
@@ -82,7 +85,10 @@ export default class EditProfile extends Component {
 
           <input type="submit" value="Save" />
         </form>
+        <h2>{this.state.error? "Something went wrong": ""}</h2>
+        <h2>{this.state.success? "Success!": ""}</h2>
       </div>
+
     );
   }
 }
