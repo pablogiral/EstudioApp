@@ -36,7 +36,7 @@ router.post("/associateStudioProject", (req, res, next) => {
 });
 
 router.get("/allStudios", (req, res, next) => {
-  console.log(req.user._id);
+  
   StudioModel.find({
     owner: req.session.passport.user
   })
@@ -74,7 +74,7 @@ router.post("/deleteStudio/:studioID", (req, res, next) => {
   const id = req.params.studioID;
   StudioModel.findByIdAndDelete(id)
     .then(deletedStudio => {
-      console.log(deletedStudio);
+      
       res.json(deletedStudio);
     })
     .catch(e => next(e));

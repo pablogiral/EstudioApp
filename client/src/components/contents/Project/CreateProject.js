@@ -6,7 +6,8 @@ export default class CreateProject extends Component {
     super(props);
     this.state = {
       projectname: "",
-      bandname: ""
+      bandname: "",
+      comments: ""
     };
     this.service = new ProjectService();
   }
@@ -16,17 +17,21 @@ export default class CreateProject extends Component {
 
     const projectName = this.state.projectname;
     const bandName = this.state.bandname;
+    const comments = this.state.comments;
+
     this.service
       .create({
         projectname: projectName,
         bandname: bandName,
+        comments: comments,
         belongsTo: this.props.urlId
       })
       .then(response => {
         this.setState({
           ...this.state,
           projectname: "",
-          bandname: ""
+          bandname: "",
+          comments: ""
         });
         this.props.getProject(response.saveProject);
       })
@@ -34,6 +39,7 @@ export default class CreateProject extends Component {
         this.setState({
           projectname: projectName,
           bandname: bandName,
+          comments: comments,
           error: true
         });
       });
@@ -68,6 +74,16 @@ export default class CreateProject extends Component {
                 value={this.state.bandname}
                 onChange={e => this.handleChange(e)}
               />
+            </fieldset>
+            <fieldset>
+              <label>Comments:</label>
+              <textarea
+                cols="50"
+                rows="8"
+                name="comments"
+                value={this.state.comments}
+                onChange={e => this.handleChange(e)}
+              ></textarea>
             </fieldset>
 
             <input type="submit" value="create" />

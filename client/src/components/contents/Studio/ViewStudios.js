@@ -28,14 +28,14 @@ export default class ViewStudios extends Component {
   getAllStudios () {
     this.service.allStudios()
     .then(allStudios=>{
-      // console.log(allStudios)
+      
       this.setState({...this.state, studios: allStudios})
 
     })
   }
 
   render() {
-    // console.log(this.state)
+    
     if (!Array.isArray(this.state.studios)) {
       return ( 
       <div>

@@ -12,15 +12,12 @@ export default class EditProfile extends Component {
       success: false
     }
     this.service = new UserService()
-    
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
     const username = this.state.newName;
     const email = this.state.newEmail;
-
-   
 
     this.service
       .editUser(username, email)
@@ -44,8 +41,7 @@ export default class EditProfile extends Component {
   };
 
   render() {
-    // console.log(this.state.newEmail)
-    // console.log(this.props.user.username)
+    
     return (
       <div>
         <h3>Edit your profile:</h3>
@@ -72,16 +68,6 @@ export default class EditProfile extends Component {
               onChange={e => this.handleChange(e)}
             />
           </fieldset>
-
-          {/* <fieldset>
-            <label>Password:</label>
-            <input
-              type="password"
-              name="password"
-              value={this.state.user.password}
-              onChange={e => this.handleChange(e)}
-            />
-          </fieldset> */}
 
           <input type="submit" value="Save" />
         </form>

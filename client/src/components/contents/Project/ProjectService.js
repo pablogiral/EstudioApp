@@ -19,6 +19,11 @@ class ProjectService {
       .get(`/allProjects/${id}`)
       .then(response => response.data);
   };
+
+  editProject = (projectname, bandname, comments) => {
+    return this.service.post('/editProject/:projectID', {projectname, bandname, comments})
+    .then(response => response.data);
+  }
 }
 
 export default ProjectService;

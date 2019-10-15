@@ -12,7 +12,7 @@ export default class Profile extends Component {
   }
 
   render() {
-    // console.log(this.state.user);
+    
     return (
       <div className="center">
         <div className="profileCard">

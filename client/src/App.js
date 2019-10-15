@@ -12,6 +12,7 @@ import ViewProjects from "./components/contents/Project/ViewProjects";
 import ViewTasks from './components/contents/Task/ViewTasks'
 import Profile from "./components/contents/User/Profile";
 import EditProfile from './components/contents/User/EditProfile';
+import EditProject from './components/contents/Project/EditProject'
 export default class App extends Component {
   constructor() {
     super();
@@ -95,6 +96,10 @@ export default class App extends Component {
               <Route
                 path="/viewprojects/:id"
                 render={props => <ViewProjects {...props} />}
+              />
+              <Route
+                path="/editproject/:id"
+                render={(props) => <EditProject {...props} />}
               />
               <Route
                 path="/viewtasks/:id"

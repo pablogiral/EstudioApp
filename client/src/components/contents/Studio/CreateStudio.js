@@ -39,7 +39,7 @@ export default class CreateStudio extends Component {
   };
 
   render() {
-    // console.log(this.state)
+    
     return (
       <div className="createStudio">
         <h3>Create your studio:</h3>

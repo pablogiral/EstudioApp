@@ -13,9 +13,9 @@ class Navbar extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    // console.log(props);
+    
     return (state.loggedInUser = props.userInSession);
-    // this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
+    
   }
 
   handleLogout = e => {
@@ -23,7 +23,7 @@ class Navbar extends Component {
   };
 
   render() {
-    // console.log(this.state.loggedInUser);
+   
     if (this.state.loggedInUser) {
       return (
         <nav className="nav-style">

@@ -7,19 +7,26 @@ export default class ViewTasks extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      projectname: "",
+      bandname: "",
+      comments: "",
+      projectimage: "",
       tasks: [],
       newTask: ""
     };
   }
 
   componentDidMount() {
-    
     axios.get(`${process.env.REACT_APP_API_URL}/api/taskRoutes/projectTasks/${this.props.match.params.id}`)
     .then(tasksFromBackend => {
-    
+      // debugger
       this.setState({
         ...this.state,
-        tasks: tasksFromBackend.data.tasks
+        tasks: tasksFromBackend.data.tasks,
+        bandname: tasksFromBackend.data.bandname,
+        projectname: tasksFromBackend.data.name,
+        comments: tasksFromBackend.data.comments,
+        projectimage: tasksFromBackend.data.projectimage
       });
     });
   }
@@ -78,11 +85,19 @@ export default class ViewTasks extends Component {
     })
     axios.get(`${process.env.REACT_APP_API_URL}/api/taskRoutes/deleteTask/${taskToDelete._id}`)
   }
-  
+
   render() {
+    
+    
     return (
       <div className="tasks">
-        <header>
+        <section>
+          <img src={this.state.projectimage} alt="project"/>
+          <h3>{this.state.projectname}</h3> - 
+          <h3>{this.state.bandname}</h3>
+          <p>{this.state.comments}</p>
+        </section>
+        <section>
           <input
             type="text"
             value={this.state.newTask}
@@ -90,7 +105,7 @@ export default class ViewTasks extends Component {
             placeholder="Please specify your new task"
           ></input>
           <button onClick={() => this.addNewTask()}>Add new task</button>
-        </header>
+        </section>
         {this.state.tasks.filter(task => !task.done).length > 0 && (
           <div>
             <h1 className="task-list">
@@ -143,7 +158,7 @@ export default class ViewTasks extends Component {
           <Link to={`/viewprojects/${this.props.match.params.id}`}>Back to projects</Link>
         </div>
       </div>
-      // <h1>hola</h1>
+      
     );
   }
 }

@@ -9,6 +9,7 @@ const musicianSchema = new Schema({
 const projectSchema = new Schema({
   name: String,
   bandname: String,
+  comments: String,
   belongsTo: String,
   projectimage: {type:String, default: "https://dt7v1i9vyp3mf.cloudfront.net/styles/news_large/s3/imagelibrary/m/micsheader-48SvWKzNIVwKt_u_8Pg_tImF81R5QYaG.jpg"},
   musicians: [musicianSchema],
