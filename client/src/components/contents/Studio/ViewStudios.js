@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import CreateStudio from './CreateStudio';
-import Studio from './Studio';
-import StudioService from './StudioService';
-import './viewStudio.css'
+import React, { Component } from "react";
+import CreateStudio from "./CreateStudio";
+import Studio from "./Studio";
+import StudioService from "./StudioService";
+import "./viewStudio.css";
 
 export default class ViewStudios extends Component {
-  constructor(props){
-    super(props)
-    this.state={
-      studios: [],
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      studios: []
+    };
     this.service = new StudioService();
   }
 
@@ -17,7 +17,8 @@ export default class ViewStudios extends Component {
     let newArray = [...this.state.studios];
     newArray.push(studioObj);
     this.setState({
-      ...this.state, studios: newArray
+      ...this.state,
+      studios: newArray
     });
   };
 
@@ -25,35 +26,32 @@ export default class ViewStudios extends Component {
     this.getAllStudios();
   }
 
-  getAllStudios () {
-    this.service.allStudios()
-    .then(allStudios=>{
-      
-      this.setState({...this.state, studios: allStudios})
-
-    })
+  getAllStudios() {
+    this.service.allStudios().then(allStudios => {
+      this.setState({ ...this.state, studios: allStudios });
+    });
   }
 
   render() {
-    
     if (!Array.isArray(this.state.studios)) {
-      return ( 
-      <div>
-        <CreateStudio getStudio={this.getStudio} />
-      </div>
-      )
-    }
-    else {
       return (
-        <React.Fragment>
-        <div className="studioView">
-          {
-            this.state.studios.map(studio => <Studio key={studio._id} studio={studio} />)
-          }
+        <div>
+          <CreateStudio getStudio={this.getStudio} />
         </div>
-        <CreateStudio getStudio={this.getStudio}></CreateStudio>
-        </React.Fragment>
-      )
+      );
+    } else {
+      return (
+        <div className="viewStudio">
+          <div className="studioView">
+            {this.state.studios.map(studio => (
+              <Studio key={studio._id} studio={studio} />
+            ))}
+          </div>
+          
+            <CreateStudio getStudio={this.getStudio}></CreateStudio>
+          
+        </div>
+      );
     }
   }
 }

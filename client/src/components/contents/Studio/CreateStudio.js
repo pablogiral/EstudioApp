@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StudioService from "./StudioService";
-import './CreateStudio.css'
+import "./CreateStudio.css";
 export default class CreateStudio extends Component {
   constructor(props) {
     super(props);
@@ -39,14 +39,12 @@ export default class CreateStudio extends Component {
   };
 
   render() {
-    
     return (
       <div className="createStudio">
         <h3>Create your studio:</h3>
 
         <form className="create-form" onSubmit={this.handleFormSubmit}>
-          <fieldset className="create-form">
-            
+          <fieldset>
             <input
               type="text"
               name="studioname"

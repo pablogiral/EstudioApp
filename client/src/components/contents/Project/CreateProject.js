@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProjectService from "./ProjectService";
+import "./CreateProject.css";
 
 export default class CreateProject extends Component {
   constructor(props) {
@@ -52,45 +53,48 @@ export default class CreateProject extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h3>Create a new project:</h3>
+      <div className="createProject">
+        <h3>Create a new project:</h3>
 
-          <form onSubmit={this.handleFormSubmit}>
+        <form className="create-project-form" onSubmit={this.handleFormSubmit}>
+          <div className="horizontal-form">
             <fieldset>
-              <label>Project name:</label>
+              {/* <label>Project name:</label> */}
               <input
                 type="text"
+                placeholder="Project name"
                 name="projectname"
                 value={this.state.projectname}
                 onChange={e => this.handleChange(e)}
               />
             </fieldset>
             <fieldset>
-              <label>Band name:</label>
+              {/* <label>Band name:</label> */}
               <input
                 type="text"
+                placeholder="Band name"
                 name="bandname"
                 value={this.state.bandname}
                 onChange={e => this.handleChange(e)}
               />
             </fieldset>
-            <fieldset>
-              <label>Comments:</label>
-              <textarea
-                cols="50"
-                rows="8"
-                name="comments"
-                value={this.state.comments}
-                onChange={e => this.handleChange(e)}
-              ></textarea>
-            </fieldset>
+          </div>
+          <fieldset>
+            {/* <label>Comments:</label> */}
+            <textarea
+              placeholder="Comments..."
+              cols="50"
+              rows="8"
+              name="comments"
+              value={this.state.comments}
+              onChange={e => this.handleChange(e)}
+            ></textarea>
+          </fieldset>
 
-            <input type="submit" value="create" />
-          </form>
+          <input type="submit" value="create" />
+        </form>
 
-          <h1>{this.state.error ? "Error" : ""}</h1>
-        </div>
+        <h1>{this.state.error ? "Error" : ""}</h1>
       </div>
     );
   }

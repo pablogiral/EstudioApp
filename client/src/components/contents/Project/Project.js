@@ -15,7 +15,10 @@ export default class Project extends Component {
         {/* <h4>Pending tasks: {this.props.project.tasks.filter(()=>{})}</h4> */}
         {/* <h6>Open tasks: {this.props.project.tasks.length} </h6> */}
         <Link to={`/viewtasks/${this.props.project._id}`}><button>See tasks</button></Link>
-        <Link to={`/editproject/${this.props.project._id}`}><button props={this.props.project}>Edit project</button></Link>
+        <div className="horizontal-buttons">
+        <Link to={`/editproject/${this.props.project._id}`}><button props={this.props.project}>Edit</button></Link>
+        <Link to={`/deleteproject/${this.props.project._id}`}><button>Delete</button></Link>
+        </div>
       </div>
     )
   }

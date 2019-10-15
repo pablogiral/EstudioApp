@@ -32,6 +32,7 @@ export default class viewProjects extends Component {
 
   componentDidMount() {
     this.getStudio();
+    // this.updateSearch();
   }
 
   async getStudio() {
@@ -64,7 +65,7 @@ export default class viewProjects extends Component {
     if (!!this.state.studio) {
       if (!!this.state.projects) {
         return (
-          <React.Fragment>
+          <div className="viewProject">
             <SearchBar
               updateSearchFormData={e => this.updateSearch(e)}
             ></SearchBar>
@@ -73,16 +74,16 @@ export default class viewProjects extends Component {
                 <Project key={project._id} project={project}></Project>
               ))}
             </div>
-            <div>
+            
               <CreateProject
                 getProject={response => this.getProject(response)}
                 urlId={this.props.match.params.id}
               ></CreateProject>
-            </div>
+            
             <div>
               <Link to={"/viewstudios"}>Back to studios</Link>
             </div>
-          </React.Fragment>
+          </div>
         );
       }
     }

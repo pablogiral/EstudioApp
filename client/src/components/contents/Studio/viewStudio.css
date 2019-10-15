@@ -3,3 +3,9 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.viewStudio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
