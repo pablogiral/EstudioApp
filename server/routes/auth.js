@@ -74,7 +74,7 @@ router.post("/updateUser", (req, res, next) => {
   
   User.findOneAndUpdate(
     req.session.passport.user,
-    { username: req.body.username, email: req.body.email },
+    { username: req.body.username, email: req.body.email, image: req.body.image },
     { new: true }
   )
     .then(updatedUser => res.json(updatedUser))

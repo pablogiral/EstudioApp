@@ -102,6 +102,9 @@ app.use('/api/projectRoutes', projectRoutes);
 const taskRoutes = require('./routes/taskRoutes');
 app.use('/api/taskRoutes', taskRoutes);
 
+const photoRoutes = require('./routes/photoRoutes');
+app.use('/api/photoRoutes', photoRoutes);
+
 
 app.use((req, res) => {     res.sendFile(__dirname + "/public/index.html");    });
 
