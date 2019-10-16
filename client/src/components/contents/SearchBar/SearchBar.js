@@ -6,8 +6,8 @@ export default class SearchBar extends Component {
       <form className="search-form" id="test">
         <input
           type="search"
-          name="foodName"
-          placeholder="Search here"
+          name="projectSearch"
+          placeholder="Search projects..."
           onChange={e => this.props.updateSearchFormData(e)}
         ></input>
       </form>

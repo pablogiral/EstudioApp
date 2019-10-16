@@ -32,6 +32,19 @@ export default class ViewStudios extends Component {
     });
   }
 
+  deleteStudio(studioToDelete) {
+    
+    let studios = [...this.state.studios];
+    let studioToDeleteFromState = studios.filter(
+      studio => studio._id !== studioToDelete._id
+    );
+    this.setState({
+      ...this.state,
+      studios: studioToDeleteFromState
+    });
+    this.service.deleteStudio(studioToDelete)
+  }
+
   render() {
     if (!Array.isArray(this.state.studios)) {
       return (
@@ -44,12 +57,17 @@ export default class ViewStudios extends Component {
         <div className="viewStudio">
           <div className="studioView">
             {this.state.studios.map(studio => (
-              <Studio key={studio._id} studio={studio} />
+              <Studio
+                key={studio._id}
+                studio={studio}
+                deleteStudio={studioToDelete =>
+                  this.deleteStudio(studioToDelete)
+                }
+              />
             ))}
           </div>
-          
-            <CreateStudio getStudio={this.getStudio}></CreateStudio>
-          
+
+          <CreateStudio getStudio={this.getStudio}></CreateStudio>
         </div>
       );
     }

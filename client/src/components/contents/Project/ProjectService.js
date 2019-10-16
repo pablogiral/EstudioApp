@@ -24,6 +24,11 @@ class ProjectService {
     return this.service.post('/editProject/:projectID', {projectname, bandname, comments})
     .then(response => response.data);
   }
+
+  deleteProject = (projectToDelete) => {
+    return this.service.post(`/deleteProject/${projectToDelete._id}`)
+    .then(response => response.data);
+  }
 }
 
 export default ProjectService;

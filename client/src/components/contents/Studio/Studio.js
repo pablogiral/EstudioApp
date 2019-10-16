@@ -15,6 +15,7 @@ export default class Studio extends Component {
         <Link to={`/viewprojects/${this.props.studio._id}`}>
           <button>See projects</button>
         </Link>
+        <button onClick={()=>this.props.deleteStudio(this.props.studio)}>Delete</button>
       </div>
     );
   }

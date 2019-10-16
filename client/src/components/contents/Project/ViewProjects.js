@@ -7,6 +7,7 @@ import "./viewProjects.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 
+
 export default class viewProjects extends Component {
   constructor(props) {
     super(props);
@@ -60,18 +61,30 @@ export default class viewProjects extends Component {
     });
   }
 
+  deleteProject(projectToDelete) {
+    // console.log(projectToDelete)
+    let projects = [...this.state.projects];
+    let projectToDeleteFromState = projects.filter(project => project._id !== projectToDelete._id);
+    this.setState({
+      ...this.state,
+      projects: projectToDeleteFromState
+    })
+    this.service.deleteproject(projectToDelete)
+    
+  }
+
   render() {
     
     if (!!this.state.studio) {
       if (!!this.state.projects) {
         return (
           <div className="viewProject">
-            <SearchBar
+            <SearchBar className="search"
               updateSearchFormData={e => this.updateSearch(e)}
             ></SearchBar>
             <div className="projectView">
               {this.state.projects.map(project => (
-                <Project key={project._id} project={project}></Project>
+                <Project key={project._id} project={project} deleteProject={(projectToDelete)=>this.deleteProject(projectToDelete)}></Project>
               ))}
             </div>
             

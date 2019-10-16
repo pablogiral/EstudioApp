@@ -54,9 +54,9 @@
 .horizontal-buttons button{
   border-radius: 0.7rem;
   outline: none;
-  margin: 0.2rem;
+  margin: 0.2rem 0.1rem;
   height: 2.5rem;
-  width: 5.1rem;
+  width: 5rem;
   color: #fff;
   background: linear-gradient(170deg, rgb(255, 255, 255), #789a9f);
   /* background: linear-gradient(-45deg,rgb(255, 0, 0),rgba(255, 255, 255, 0.411)); */
