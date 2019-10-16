@@ -20,8 +20,8 @@ class ProjectService {
       .then(response => response.data);
   };
 
-  editProject = (projectID, projectname, bandname, comments) => {
-    return this.service.post(`/editProject/${projectID}`, {projectname, bandname, comments})
+  editProject = (projectID, projectname, bandname, comments, image) => {
+    return this.service.post(`/editProject/${projectID}`, {projectname, bandname, comments, image})
     .then(response => response.data);
   }
 

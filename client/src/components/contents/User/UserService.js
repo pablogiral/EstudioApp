@@ -13,11 +13,12 @@ class UserService {
     .then(response => response.data);
   }
 
-  editUser = (username, email) => {
-    return this.service.post('/updateUser', {username, email})
+  editUser = (username, email, image) => {
+    return this.service.post('/updateUser', {username, email, image})
     .then(response => response.data);
   }
 
+  
 
 }
 

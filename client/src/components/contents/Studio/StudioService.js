@@ -29,8 +29,8 @@ class StudioService {
     .then(response => response.data);
   }
 
-  editStudio = (id, studioname) => {
-    return this.service.post(`/editStudio/${id}`, {studioname})
+  editStudio = (id, studioname, image) => {
+    return this.service.post(`/editStudio/${id}`, {studioname, image})
     .then(response => response.data);
   }
 }

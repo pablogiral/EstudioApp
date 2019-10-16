@@ -2,7 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
-const StudioModel = require("../models/StudioModel");
+// const StudioModel = require("../models/StudioModel");
 
 
 // Bcrypt to encrypt passwords

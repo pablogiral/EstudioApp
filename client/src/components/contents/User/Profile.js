@@ -12,7 +12,6 @@ export default class Profile extends Component {
   }
 
   render() {
-    
     return (
       <div className="center">
         <div className="profileCard">
@@ -20,7 +19,7 @@ export default class Profile extends Component {
           <div>
             <h1>Hello {this.state.user.username}!</h1>
             <h3>email: {this.state.user.email}</h3>
-            <h3>User since: {Moment(this.state.user.created_at).format('yyyy/mm/dd')}</h3>
+            <h3>User since: {Moment(this.state.user.created_at).format('dddd DD MMM YYYY')}</h3>
             <div>
               <Link to={'/editprofile'}><button props={this.state.user}>Edit your profile</button></Link>
               <button onClick={() => this.props.deleteUser()}>

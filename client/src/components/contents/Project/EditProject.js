@@ -1,45 +1,72 @@
 import React, { Component } from "react";
-import ProjectService from './ProjectService'
-import { Link } from "react-router-dom"
+import ProjectService from "./ProjectService";
+import { Link } from "react-router-dom";
+import PhotoService from "../PhotoService";
 
 export default class EditProject extends Component {
-  constructor(props){
-    super(props)
-    this.state={
+  constructor(props) {
+    super(props);
+    this.state = {
       projectname: this.props.project.name,
       bandname: this.props.project.bandname,
       comments: this.props.project.comments,
+      imgPath: "",
       error: null,
       success: false
-    }
-    this.service = new ProjectService()
-    
+    };
+    this.service = new ProjectService();
+    this.photoService = new PhotoService();
   }
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit = event => {
     event.preventDefault();
     const projectname = this.state.projectname;
     const bandname = this.state.bandname;
     const comments = this.state.comments;
-    const projectID= this.props.project._id;
-    
+    const image = this.state.imgPath;
+    const projectID = this.props.project._id;
+
     this.service
-      .editProject(projectID, projectname, bandname, comments)
+      .editProject(projectID, projectname, bandname, comments, image)
       .then(response => {
         this.setState({
           projectname: projectname,
           bandname: bandname,
           comments: comments,
+          imgPath: image,
           success: true,
-          error: false,
+          error: false
         });
       })
       .catch(error => {
         this.setState({
-          error: true,
+          error: true
         });
       });
   };
+
+  handleFileUpload = e => {
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+    this.photoService
+      .handleUpload(uploadData)
+      .then(response => {
+        this.setState({
+          imgPath: response.secure_url
+        });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+  };
+
+  checkToSend() {
+    if (!this.state.projectname || !this.state.imgPath) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -82,17 +109,24 @@ export default class EditProject extends Component {
               value={this.state.comments}
               onChange={e => this.handleChange(e)}
             ></textarea>
-            
           </fieldset>
-
-          <input type="submit" value="Save" />
+          <input
+            className="file-input"
+            type="file"
+            name="imageUrl"
+            onChange={e => this.handleFileUpload(e)}
+          />
+          <button type="submit" disabled={this.checkToSend()}>
+            Save changes
+          </button>
         </form>
         <h2>{this.state.error ? "Something went wrong" : ""}</h2>
         <h2>{this.state.success ? "Success!" : ""}</h2>
 
-        
         <div>
-          <Link to={`/viewprojects/${this.props.selectedStudio}`}>Back to projects</Link>
+          <Link to={`/viewprojects/${this.props.selectedStudio}`}>
+            Back to projects
+          </Link>
         </div>
       </div>
     );
