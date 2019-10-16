@@ -7,7 +7,6 @@ import "./viewProjects.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 
-
 export default class viewProjects extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +20,6 @@ export default class viewProjects extends Component {
   }
 
   getProject = project => {
-   
     let newArray = [...this.state.projects];
     newArray.push(project);
     this.setState({
@@ -40,6 +38,7 @@ export default class viewProjects extends Component {
     const studio = await this.serviceStudio.oneStudio(
       this.props.match.params.id
     );
+    // console.log(studio);
     this.setState({
       ...this.state,
       studio: studio,
@@ -52,7 +51,7 @@ export default class viewProjects extends Component {
   updateSearch(e) {
     let search = e.target.value;
     let projectsSearch = [...this.state.projectsClean];
-    
+
     this.setState({
       ...this.state,
       projects: projectsSearch.filter(project =>
@@ -62,15 +61,16 @@ export default class viewProjects extends Component {
   }
 
   deleteProject(projectToDelete) {
-    // console.log(projectToDelete)
+    
     let projects = [...this.state.projects];
-    let projectToDeleteFromState = projects.filter(project => project._id !== projectToDelete._id);
+    let projectToDeleteFromState = projects.filter(
+      project => project._id !== projectToDelete._id
+    );
     this.setState({
       ...this.state,
       projects: projectToDeleteFromState
-    })
-    this.service.deleteproject(projectToDelete)
-    
+    });
+    this.service.deleteProject(projectToDelete);
   }
 
   render() {
@@ -79,20 +79,29 @@ export default class viewProjects extends Component {
       if (!!this.state.projects) {
         return (
           <div className="viewProject">
-            <SearchBar className="search"
+            <SearchBar
+              className="search"
               updateSearchFormData={e => this.updateSearch(e)}
             ></SearchBar>
             <div className="projectView">
               {this.state.projects.map(project => (
-                <Project key={project._id} project={project} deleteProject={(projectToDelete)=>this.deleteProject(projectToDelete)}></Project>
+                <Project
+                  key={project._id}
+                  project={project}
+                  selected={this.props.selectedStudio}
+                  deleteProject={projectToDelete =>
+                    this.deleteProject(projectToDelete)
+                  }
+                  editProject={this.props.editProject}
+                ></Project>
               ))}
             </div>
-            
-              <CreateProject
-                getProject={response => this.getProject(response)}
-                urlId={this.props.match.params.id}
-              ></CreateProject>
-            
+
+            <CreateProject
+              getProject={response => this.getProject(response)}
+              urlId={this.props.match.params.id}
+            ></CreateProject>
+
             <div>
               <Link to={"/viewstudios"}>Back to studios</Link>
             </div>

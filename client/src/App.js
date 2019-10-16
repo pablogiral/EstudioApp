@@ -13,11 +13,15 @@ import ViewTasks from './components/contents/Task/ViewTasks'
 import Profile from "./components/contents/User/Profile";
 import EditProfile from './components/contents/User/EditProfile';
 import EditProject from './components/contents/Project/EditProject'
+import EditStudio from "./components/contents/Studio/EditStudio";
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      projecttoedit: {},
+      selectedStudio: "",
+      studiotoedit: {},
     };
     this.service = new AuthService();
     this.serviceUser = new UserService();
@@ -46,6 +50,8 @@ export default class App extends Component {
     }
   }
 
+  
+
   //este método vuelca la información del usuario y lo guarda en el state de app que siempre puedes revisitar
   fetchUser() {
     return this.service
@@ -60,6 +66,19 @@ export default class App extends Component {
           loggedInUser: false
         });
       });
+  }
+
+  editProject = (project) => {
+    this.setState({...this.state, projecttoedit: project})
+  }
+
+  editStudio = (studio) => {
+    
+    this.setState({...this.state, studiotoedit: studio})
+  }
+
+  selectedStudio=(id)=>{
+    this.setState({...this.state,selectedStudio:id})
   }
 
   render() {
@@ -84,9 +103,9 @@ export default class App extends Component {
                 path="/viewcalendar"
                 render={() => <ViewCalendar />}
               />
-              <Route exact path="/viewstudios" render={() => <ViewStudios />} />
-              <Route exact path="/home" render={() => <ViewStudios />} />
-              <Route exact path="/" render={() => <ViewStudios />} />
+              <Route exact path="/viewstudios" render={() => <ViewStudios selected={this.selectedStudio} editStudio={this.editStudio}/>} />
+              <Route exact path="/home" render={() => <ViewStudios selected={this.selectedStudio} editStudio={this.editStudio}/>} />
+              <Route exact path="/" render={() => <ViewStudios selected={this.selectedStudio} editStudio={this.editStudio}/>} />
               <Route
                 exact
                 path="/profile"
@@ -95,15 +114,19 @@ export default class App extends Component {
               <Route exact path="/editprofile" render={() => <EditProfile user={this.state.loggedInUser}/>} />
               <Route
                 path="/viewprojects/:id"
-                render={props => <ViewProjects {...props} />}
+                render={props => <ViewProjects {...props} editProject={this.editProject}/>}
               />
               <Route
                 path="/editproject/:id"
-                render={(props) => <EditProject {...props} />}
+                render={(props) => <EditProject {...props} project={this.state.projecttoedit}/>}
+              />
+              <Route
+                path="/editstudio/:id"
+                render={(props) => <EditStudio {...props} studio={this.state.studiotoedit}/>}
               />
               <Route
                 path="/viewtasks/:id"
-                render={(props) => <ViewTasks {...props}/>}
+                render={(props) => <ViewTasks {...props} selectedStudio={this.state.selectedStudio}/>}
               />
             </Switch>
           </div>

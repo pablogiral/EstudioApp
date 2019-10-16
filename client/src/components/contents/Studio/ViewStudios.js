@@ -46,6 +46,7 @@ export default class ViewStudios extends Component {
   }
 
   render() {
+    
     if (!Array.isArray(this.state.studios)) {
       return (
         <div>
@@ -59,6 +60,8 @@ export default class ViewStudios extends Component {
             {this.state.studios.map(studio => (
               <Studio
                 key={studio._id}
+                editStudio={this.props.editStudio}
+                selected={this.props.selected}
                 studio={studio}
                 deleteStudio={studioToDelete =>
                   this.deleteStudio(studioToDelete)

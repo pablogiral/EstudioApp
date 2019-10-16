@@ -155,7 +155,7 @@ export default class ViewTasks extends Component {
           <h1>No tasks done</h1>
         )}
         <div>
-          <Link to={`/viewprojects/${this.props.match.params.id}`}>Back to projects</Link>
+          <Link to={`/viewprojects/${this.props.selectedStudio}`}>Back to projects</Link>
         </div>
       </div>
       

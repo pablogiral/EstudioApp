@@ -62,7 +62,7 @@ router.post("/editStudio/:studioID", (req, res, next) => {
     id,
     {
       studioname: req.body.studioname,
-      studioimage: req.body.studioimage
+      // studioimage: req.body.studioimage
     },
     { new: true }
   )

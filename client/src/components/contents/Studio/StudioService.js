@@ -28,6 +28,11 @@ class StudioService {
     return this.service.post(`/deleteStudio/${studioToDelete._id}`)
     .then(response => response.data);
   }
+
+  editStudio = (id, studioname) => {
+    return this.service.post(`/editStudio/${id}`, {studioname})
+    .then(response => response.data);
+  }
 }
 
 export default StudioService;

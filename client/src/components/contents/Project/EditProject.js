@@ -1,33 +1,37 @@
 import React, { Component } from "react";
 import ProjectService from './ProjectService'
+import { Link } from "react-router-dom"
 
 export default class EditProject extends Component {
   constructor(props){
     super(props)
     this.state={
-      projectname: this.props.name,
-      bandname: this.props.bandname,
-      comments: this.props.comments,
+      projectname: this.props.project.name,
+      bandname: this.props.project.bandname,
+      comments: this.props.project.comments,
       error: null,
       success: false
     }
     this.service = new ProjectService()
+    
   }
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     const projectname = this.state.projectname;
     const bandname = this.state.bandname;
     const comments = this.state.comments;
-
+    const projectID= this.props.project._id;
+    
     this.service
-      .editProject(projectname, bandname, comments)
+      .editProject(projectID, projectname, bandname, comments)
       .then(response => {
         this.setState({
           projectname: projectname,
           bandname: bandname,
           comments: comments,
           success: true,
+          error: false,
         });
       })
       .catch(error => {
@@ -43,7 +47,7 @@ export default class EditProject extends Component {
   };
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div>
         <h3>Edit project:</h3>
@@ -85,6 +89,11 @@ export default class EditProject extends Component {
         </form>
         <h2>{this.state.error ? "Something went wrong" : ""}</h2>
         <h2>{this.state.success ? "Success!" : ""}</h2>
+
+        
+        <div>
+          <Link to={`/viewprojects/${this.props.selectedStudio}`}>Back to projects</Link>
+        </div>
       </div>
     );
   }
