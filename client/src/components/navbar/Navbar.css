@@ -4,7 +4,6 @@
 	justify-content: space-around;
 	align-items: center;
 	height: 3rem;
-	/* position: fixed; */
 	background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
 }
 
@@ -25,9 +24,8 @@
 .nav-style img{
 	height: 2.8rem;
 	/* margin-left: 1rem; */
-	padding: 0.2rem 1rem;
+	padding: 0.2rem 0.1rem 0.2rem 1rem;
 }
-
 
 .navbar-block-left {
 	display: flex;
@@ -36,6 +34,7 @@
 	align-items: center;
 	height: inherit;
 }
+
 .navbar-block-right {
 	display: flex;
 	width: 50%;
@@ -45,6 +44,6 @@
 }
 
 .navbar-element{
-	padding: 1rem;
-	margin: 0 1rem;
+	padding: 0.2rem 0 0.2rem 0.2rem ;
+	margin: 0 0.3rem;
 }

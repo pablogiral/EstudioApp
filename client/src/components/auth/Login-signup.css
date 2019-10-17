@@ -6,6 +6,10 @@
   margin: 2rem;
 }
 
+.login-signup h1 {
+  margin: 1rem;
+}
+
 .LSlabel {
   font-size: 1.2rem;
   font-weight: 100;
@@ -13,7 +17,7 @@
 }
 
 .LSinput {
-  width: 15rem;
+  width: 70%;
   height: 2rem;
   font-size: 1.2rem;
   font-weight: 100;

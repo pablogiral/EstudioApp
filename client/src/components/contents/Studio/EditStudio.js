@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import StudioService from "./StudioService";
 import { Link } from "react-router-dom";
 import PhotoService from "../PhotoService";
+import "./EditStudio.css";
 
 export default class EditStudio extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ export default class EditStudio extends Component {
       .handleUpload(uploadData)
       .then(response => {
         this.setState({
-          imgPath: response.secure_url
+          imgPath: response.image_url
         });
       })
       .catch(err => {
@@ -69,26 +70,31 @@ export default class EditStudio extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Edit project:</h3>
+      <div className="edit-studio">
+        <h3>Edit studio:</h3>
 
-        <form onSubmit={this.handleFormSubmit}>
-          <fieldset>
-            <label>Project name:</label>
-            <input
-              type="text"
-              // placeholder={this.state.user.username}
-              name="studioname"
-              value={this.state.studioname}
-              onChange={e => this.handleChange(e)}
-            />
-          </fieldset>
+        <form className="edit-form" onSubmit={this.handleFormSubmit}>
+          <label className="edit-label">Studio name:</label>
           <input
-            className="file-input"
+            type="text"
+            name="studioname"
+            value={this.state.studioname}
+            onChange={e => this.handleChange(e)}
+          />
+
+          <label className="edit-label">Studio image:</label>
+          <label htmlFor="uploader" className="fake-uploader"><img src="https://res.cloudinary.com/dmzi2js9s/image/upload/v1571321408/upload_1_uwjkbg.png" alt="arrow"></img></label>
+          <input
+            className="inputfile"
             type="file"
+            id="uploader"
             name="imageUrl"
             onChange={e => this.handleFileUpload(e)}
           />
+          {this.state.imgPath && (
+          <img className="new-upload-img" src={this.state.imgPath} alt="New upload"></img>
+        )}
+        
           <button type="submit" disabled={this.checkToSend()}>
             Save changes
           </button>
@@ -96,10 +102,9 @@ export default class EditStudio extends Component {
         <h2>{this.state.error ? "Something went wrong" : ""}</h2>
         <h2>{this.state.success ? "Success!" : ""}</h2>
 
+        
         <div>
-          <Link to={`/viewprojects/${this.props.selectedStudio}`}>
-            Back to projects
-          </Link>
+          <Link to={`/viewstudios`}><button className="button-back">Back to projects</button></Link>
         </div>
       </div>
     );

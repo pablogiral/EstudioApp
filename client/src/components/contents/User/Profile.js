@@ -11,9 +11,10 @@ export default class Profile extends Component {
     };
   }
 
+
   render() {
     return (
-      <div className="center">
+      <div className="view-profile">
         <div className="profileCard">
           <img src={this.state.user.image} alt="profile pic"></img>
           <div>

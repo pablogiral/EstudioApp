@@ -54,18 +54,18 @@ class Signup extends Component {
 
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>
-            <label className="LSlabel">Username:</label>
-            <input className="LSinput" type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
+            {/* <label className="LSlabel">Username:</label> */}
+            <input className="LSinput" placeholder="Username..." type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
           </fieldset>
 
-          <fieldset className="align">
-            <label className="LSlabel">Email:</label>
-            <input className="LSinput" type="text" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
+          <fieldset >
+            {/* <label className="LSlabel">Email:</label> */}
+            <input className="LSinput" placeholder="Email..." type="text" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
           </fieldset>
 
           <fieldset>
-            <label className="LSlabel">Password:</label>
-            <input className="LSinput" type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+            {/* <label className="LSlabel">Password:</label> */}
+            <input className="LSinput" placeholder="Password..." type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           </fieldset>
           
           <input className="LSbutton" type="submit" value="Sign up" />

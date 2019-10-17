@@ -28,7 +28,7 @@ export default class Project extends Component {
             <button onClick={(e)=>this.editHandler(e)}>Edit</button>
           </Link>
 
-          <button onClick={() => this.props.deleteProject(this.props.project)}>
+          <button className="danger" onClick={() => this.props.deleteProject(this.props.project)}>
             Delete
           </button>
 

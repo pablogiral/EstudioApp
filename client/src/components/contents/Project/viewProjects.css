@@ -10,3 +10,18 @@
   align-items: center;
 }
 
+.button-back {
+  border-radius: 0.7rem;
+  outline: none;
+  margin-top: 1rem;
+  height: 2.5rem;
+  width: 10.2rem;
+  color: #fff;
+  background: linear-gradient(170deg, rgb(255, 255, 255), #789a9f);
+  box-shadow: 1px 1px 3px 0px #a7a7a7a6;
+  font-size: 1.2rem;
+  font-weight: 100;
+  transition:  0.3s;
+  color: white;
+  margin: 2rem;
+}

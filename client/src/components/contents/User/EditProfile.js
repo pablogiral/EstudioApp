@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserService from "./UserService";
 import PhotoService from "../PhotoService";
+import "./EditProfile.css";
 
 export default class EditProfile extends Component {
   constructor(props) {
@@ -11,8 +12,7 @@ export default class EditProfile extends Component {
       newEmail: this.props.user.email,
       imgPath: "",
       error: null,
-      success: false,
-      
+      success: false
     };
     this.service = new UserService();
     this.photoService = new PhotoService();
@@ -27,12 +27,17 @@ export default class EditProfile extends Component {
     this.service
       .editUser(username, email, image)
       .then(response => {
-        this.setState({
-          newName: username,
-          newEmail: email,
-          imgPath: image,
-          success: true
-        });
+        this.setState(
+          {
+            newName: username,
+            newEmail: email,
+            imgPath: image,
+            success: true
+          },
+          () => {
+            this.props.fetchUser();
+          }
+        );
       })
       .catch(error => {
         this.setState({
@@ -48,8 +53,7 @@ export default class EditProfile extends Component {
       .handleUpload(uploadData)
       .then(response => {
         this.setState({
-          imgPath: response.secure_url,
-          
+          imgPath: response.image_url
         });
       })
       .catch(err => {
@@ -63,56 +67,64 @@ export default class EditProfile extends Component {
   };
 
   checkToSend() {
-    if (
-      !this.state.newName ||
-      !this.state.newEmail ||
-      !this.state.imgPath
-      
-    ) {
+    if (!this.state.newName || !this.state.newEmail || !this.state.imgPath) {
       return true;
     } else {
       return false;
     }
   }
 
-
   render() {
     return (
-      <div>
+      <div className="edit-profile">
         <h3>Edit your profile:</h3>
 
-        <form onSubmit={this.handleFormSubmit}>
-          <fieldset>
-            <label>Username:</label>
-            <input
-              type="text"
-              // placeholder={this.state.user.username}
-              name="newName"
-              value={this.state.newName}
-              onChange={e => this.handleChange(e)}
-            />
-          </fieldset>
+        <form className="edit-form" onSubmit={this.handleFormSubmit}>
+          <div className="edit-profile-flex">
+            <div className="edit-profile-flex-col">
+              <label className="edit-label">Username:</label>
+              <input
+                type="text"
+                name="newName"
+                value={this.state.newName}
+                onChange={e => this.handleChange(e)}
+              />
 
-          <fieldset>
-            <label>Email:</label>
-            <input
-              type="text"
-              // placeholder={this.state.user.email}
-              name="newEmail"
-              value={this.state.newEmail}
-              onChange={e => this.handleChange(e)}
-            />
-          </fieldset>
-          <input
-            className="file-input"
-            type="file"
-            name="imageUrl"
-            onChange={e => this.handleFileUpload(e)}
-          />
+              <label className="edit-label">Email:</label>
+              <input
+                type="text"
+                name="newEmail"
+                value={this.state.newEmail}
+                onChange={e => this.handleChange(e)}
+              />
+              <label className="edit-label">New photo:</label>
+              <label htmlFor="profile-uploader" className="fake-uploader">
+                <img
+                  src="https://res.cloudinary.com/dmzi2js9s/image/upload/v1571321408/upload_1_uwjkbg.png"
+                  alt="arrow"
+                ></img>
+              </label>
+              <input
+                className="inputfile"
+                type="file"
+                id="profile-uploader"
+                name="imageUrl"
+                onChange={e => this.handleFileUpload(e)}
+              />
+            </div>
+            <div>
+              {this.state.imgPath && (
+                <img
+                  className="new-upload-img"
+                  src={this.state.imgPath}
+                  alt="New upload"
+                ></img>
+              )}
+            </div>
+          </div>
           <button type="submit" disabled={this.checkToSend()}>
             Save changes
           </button>
-         
         </form>
         <h2>{this.state.error ? "Something went wrong" : ""}</h2>
         <h2>{this.state.success ? "Success!" : ""}</h2>

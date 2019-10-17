@@ -1,12 +1,16 @@
 .search-form input[type="search"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
-  width: 25rem;
+  width: 70%;
   height: 2rem;
   margin-top: 1rem;
   border-radius: 0.7rem;
   outline: none;
   font-size: 1.2rem;
   font-weight: 100;
+}
+
+.search-form{
+  width: 100%;
 }
 

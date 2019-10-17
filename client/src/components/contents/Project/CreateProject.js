@@ -58,38 +58,31 @@ export default class CreateProject extends Component {
 
         <form className="create-project-form" onSubmit={this.handleFormSubmit}>
           <div className="horizontal-form">
-            <fieldset>
-              {/* <label>Project name:</label> */}
-              <input
-                type="text"
-                placeholder="Project name"
-                name="projectname"
-                value={this.state.projectname}
-                onChange={e => this.handleChange(e)}
-              />
-            </fieldset>
-            <fieldset>
-              {/* <label>Band name:</label> */}
-              <input
-                type="text"
-                placeholder="Band name"
-                name="bandname"
-                value={this.state.bandname}
-                onChange={e => this.handleChange(e)}
-              />
-            </fieldset>
-          </div>
-          <fieldset>
-            {/* <label>Comments:</label> */}
-            <textarea
-              placeholder="Comments..."
-              cols="50"
-              rows="8"
-              name="comments"
-              value={this.state.comments}
+            <input
+              type="text"
+              placeholder="Project name"
+              name="projectname"
+              value={this.state.projectname}
               onChange={e => this.handleChange(e)}
-            ></textarea>
-          </fieldset>
+            />
+
+            <input
+              type="text"
+              placeholder="Band name"
+              name="bandname"
+              value={this.state.bandname}
+              onChange={e => this.handleChange(e)}
+            />
+          </div>
+
+          <textarea
+            placeholder="Comments..."
+            cols="50"
+            rows="8"
+            name="comments"
+            value={this.state.comments}
+            onChange={e => this.handleChange(e)}
+          ></textarea>
 
           <input type="submit" value="create" />
         </form>

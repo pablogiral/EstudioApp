@@ -4,17 +4,20 @@
   border: 1px solid rgba(139, 139, 139, 0.5);
   border-radius: 0.7rem;
   box-shadow: 2px 5px 10px 0px #a7a7a7a6;
-  width: 50%;
+  width: 70%;
+  max-width: 25rem;
   border-radius:0.7rem;
-  padding: 1rem;
+  /* padding: 0.5rem; */
 }
 
 .createProject h3 {
-  margin: 1rem;
+  margin: 1.5rem 0;
 }
 
 .horizontal-form {
   display: flex;
+  justify-content: center;
+  width: 95%;
 }
 
 .create-project-form{
@@ -23,26 +26,26 @@
   align-items: center;
 }
 
-.create-project-form input[type="text"]{
-  width: 15rem;
+.create-project-form input{
+  width: 50%;
   height: 2rem;
   font-size: 1.2rem;
   font-weight: 100;
   border-radius: 0.3rem;
   outline: none;
-  margin: 0.3rem;
+  margin: 0.3rem 0.25rem;
+  color: white;
 }
 
 .create-project-form textarea {
-  width: 30rem;
+  width: 92%;
   height: 5rem;
   font-size: 1.2rem;
   font-weight: 100;
   border-radius: 0.3rem;
   outline: none;
   border-color: rgba(139, 139, 139, 0.5);
-  /* border-color: white; */
-  margin: 0.3rem;
+  margin: 0.1rem 0.5rem;
 }
 
 .create-project-form input[type="submit"] {
@@ -56,3 +59,4 @@
   font-size: 1.2rem;
   font-weight: 100;
 }
+

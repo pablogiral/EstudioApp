@@ -93,7 +93,7 @@ export default class ViewTasks extends Component {
       <div className="tasks">
         <section>
           <img src={this.state.projectimage} alt="project"/>
-          <h3>{this.state.projectname}</h3> - 
+          <h3>{this.state.projectname}</h3>
           <h3>{this.state.bandname}</h3>
           <p>{this.state.comments}</p>
         </section>
@@ -109,7 +109,7 @@ export default class ViewTasks extends Component {
         {this.state.tasks.filter(task => !task.done).length > 0 && (
           <div>
             <h1 className="task-list">
-              Total tasks to do -{" "}
+              To do -{" "}
               {this.state.tasks.filter(task => !task.done).length}
             </h1>
             <section className="task-list" >
@@ -132,7 +132,7 @@ export default class ViewTasks extends Component {
         {this.state.tasks.filter(task => task.done).length > 0 && (
           <div>
             <h1 className="task-list">
-              Total tasks done -{" "}
+              Done -{" "}
               {this.state.tasks.filter(task => task.done).length}
             </h1>
             <section className="task-list">
@@ -144,6 +144,7 @@ export default class ViewTasks extends Component {
                       key={task._id}
                       task={task}
                       updateTaskValue={task => this.updateTaskValue(task)}
+                      deleteTask={task=> this.deleteTask(task)}
                     ></Task>
                   );
                 })}

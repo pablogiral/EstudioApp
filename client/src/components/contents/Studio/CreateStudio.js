@@ -48,7 +48,7 @@ export default class CreateStudio extends Component {
             <input
               type="text"
               name="studioname"
-              placeholder="Enter your studio's name"
+              placeholder="Your studio's name..."
               value={this.state.studioname}
               onChange={e => this.handleChange(e)}
             />
@@ -57,7 +57,7 @@ export default class CreateStudio extends Component {
           <input type="submit" value="create" />
         </form>
 
-        <h1>{this.state.error ? "Error" : ""}</h1>
+        <h1>{this.state.error ? "You need a name!" : ""}</h1>
       </div>
     );
   }

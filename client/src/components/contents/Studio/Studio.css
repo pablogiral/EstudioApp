@@ -8,7 +8,7 @@
   border-radius: 0.7rem;
   margin: 1rem;
   width: 18rem;
-  height: 22rem;
+  height: 25rem;
   padding: 1rem;
   box-shadow: 2px 5px 10px 0px #a7a7a7a6;
   transition: all 0.5s
@@ -22,20 +22,34 @@
 }
 
 .studioCard img {
-  width: 11rem;
-  height: 11rem;
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
   border-radius: 50%;
 }
 
 .studioCard button {
   border-radius: 0.7rem;
   outline: none;
-  margin: 1rem;
+  margin: 0.5rem;
   height: 2.5rem;
   width: 10.2rem;
   background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
   box-shadow: 1px 1px 3px 0px #a7a7a7a6;
   font-size: 1.2rem;
   font-weight: 100;
+  color: white;
 }
 
+.studioCard button:hover {
+  background: linear-gradient(160deg, rgb(255, 255, 255), #789a9f);
+  cursor: pointer;
+}
+
+.horizontal-buttons{
+  display: flex;
+}
+
+.studioCard h2 {
+  margin: 0.45rem;
+}

@@ -103,7 +103,7 @@ export default class viewProjects extends Component {
             ></CreateProject>
 
             <div>
-              <Link to={"/viewstudios"}>Back to studios</Link>
+              <Link to={"/viewstudios"}><button className="button-back">Back to studios</button></Link>
             </div>
           </div>
         );

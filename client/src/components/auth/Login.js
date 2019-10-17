@@ -48,8 +48,9 @@ class Login extends Component {
 
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>
-            <label className="LSlabel">Username:</label>
+            {/* <label className="LSlabel">Username:</label> */}
             <input className="LSinput"
+              placeholder="Username"
               type="text"
               name="username"
               value={this.state.username}
@@ -58,8 +59,9 @@ class Login extends Component {
           </fieldset>
 
           <fieldset>
-            <label className="LSlabel">Password:</label>
+            {/* <label className="LSlabel">Password:</label> */}
             <input className="LSinput"
+              placeholder="Password"
               type="password"
               name="password"
               value={this.state.password}

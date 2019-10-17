@@ -53,8 +53,8 @@ export default class App extends Component {
   
 
   //este método vuelca la información del usuario y lo guarda en el state de app que siempre puedes revisitar
-  fetchUser() {
-    return this.service
+  fetchUser=()=> {
+     this.service
       .loggedin()
       .then(response => {
         this.setState({
@@ -82,7 +82,7 @@ export default class App extends Component {
   }
 
   render() {
-    
+    // console.log(this.state)
     //aqui hacemos rendering condicional dependiendo de si tenemos un usuario logeado o no
     if (this.state.loggedInUser) {
       //en este caso mostramos los contenidos ya que hay usuario
@@ -111,14 +111,14 @@ export default class App extends Component {
                 path="/profile"
                 render={() => <Profile user={this.state.loggedInUser} deleteUser={() => this.deleteUser()} />}
               />
-              <Route exact path="/editprofile" render={() => <EditProfile user={this.state.loggedInUser}/>} />
+              <Route exact path="/editprofile" render={() => <EditProfile user={this.state.loggedInUser} fetchUser={this.fetchUser}/>} />
               <Route
                 path="/viewprojects/:id"
                 render={props => <ViewProjects {...props} editProject={this.editProject}/>}
               />
               <Route
                 path="/editproject/:id"
-                render={(props) => <EditProject {...props} project={this.state.projecttoedit}/>}
+                render={(props) => <EditProject {...props} project={this.state.projecttoedit} selectedStudio={this.state.selectedStudio}/>}
               />
               <Route
                 path="/editstudio/:id"

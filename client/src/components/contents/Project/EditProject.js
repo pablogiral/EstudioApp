@@ -52,7 +52,7 @@ export default class EditProject extends Component {
       .handleUpload(uploadData)
       .then(response => {
         this.setState({
-          imgPath: response.secure_url
+          imgPath: response.image_url
         });
       })
       .catch(err => {
@@ -122,7 +122,8 @@ export default class EditProject extends Component {
         </form>
         <h2>{this.state.error ? "Something went wrong" : ""}</h2>
         <h2>{this.state.success ? "Success!" : ""}</h2>
-
+        
+        {this.state.imgPath && <img src={this.state.imgPath} alt="New upload"></img>  }
         <div>
           <Link to={`/viewprojects/${this.props.selectedStudio}`}>
             Back to projects
