@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import UserService from "./UserService";
 import PhotoService from "../PhotoService";
 import "./EditProfile.css";
+import { Link } from "react-router-dom";
 
 export default class EditProfile extends Component {
   constructor(props) {
@@ -128,6 +129,7 @@ export default class EditProfile extends Component {
         </form>
         <h2>{this.state.error ? "Something went wrong" : ""}</h2>
         <h2>{this.state.success ? "Success!" : ""}</h2>
+        <Link to={'/profile'}><button className="button-back">Go back</button></Link>
       </div>
     );
   }

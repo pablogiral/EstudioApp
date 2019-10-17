@@ -11,7 +11,8 @@
   height: 25rem;
   padding: 1rem;
   box-shadow: 2px 5px 10px 0px #a7a7a7a6;
-  transition: all 0.5s
+  transition: all 0.5s;
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(254, 254, 254, 0.5));
 }
 
 .studioCard:hover{

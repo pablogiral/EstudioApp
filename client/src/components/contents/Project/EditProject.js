@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ProjectService from "./ProjectService";
 import { Link } from "react-router-dom";
 import PhotoService from "../PhotoService";
+import './EditProject.css'
 
 export default class EditProject extends Component {
   constructor(props) {
@@ -74,59 +75,75 @@ export default class EditProject extends Component {
   };
 
   render() {
-    // console.log(this.props)
     return (
-      <div>
+      <div className="edit-studio">
         <h3>Edit project:</h3>
 
         <form onSubmit={this.handleFormSubmit}>
-          <fieldset>
-            <label>Project name:</label>
-            <input
-              type="text"
-              // placeholder={this.state.user.username}
-              name="projectname"
-              value={this.state.projectname}
-              onChange={e => this.handleChange(e)}
-            />
-          </fieldset>
+          <div className="edit-studio-form">
+            <div className="edit-studio-info">
+              <label className="edit-label">Project name:</label>
+              <input
+                type="text"
+                // placeholder={this.state.user.username}
+                name="projectname"
+                value={this.state.projectname}
+                onChange={e => this.handleChange(e)}
+              />
 
-          <fieldset>
-            <label>Band name:</label>
-            <input
-              type="text"
-              // placeholder={this.state.user.email}
-              name="bandname"
-              value={this.state.bandname}
-              onChange={e => this.handleChange(e)}
-            />
-          </fieldset>
+              <label className="edit-label">Band name:</label>
+              <input
+                type="text"
+                // placeholder={this.state.user.email}
+                name="bandname"
+                value={this.state.bandname}
+                onChange={e => this.handleChange(e)}
+              />
 
-          <fieldset>
-            <label>Comments:</label>
-            <textarea
-              name="comments"
-              value={this.state.comments}
-              onChange={e => this.handleChange(e)}
-            ></textarea>
-          </fieldset>
-          <input
-            className="file-input"
-            type="file"
-            name="imageUrl"
-            onChange={e => this.handleFileUpload(e)}
-          />
+              <label className="edit-label">Comments:</label>
+              <div className="edit-project-textarea">
+                <textarea
+                  name="comments"
+                  value={this.state.comments}
+                  onChange={e => this.handleChange(e)}
+                ></textarea>
+              </div>
+
+              <label className="edit-label">Project image:</label>
+              <label htmlFor="uploader" className="fake-uploader">
+                <img
+                  src="https://res.cloudinary.com/dmzi2js9s/image/upload/v1571321408/upload_1_uwjkbg.png"
+                  alt="arrow"
+                ></img>
+              </label>
+              <input
+                className="inputfile"
+                type="file"
+                id="uploader"
+                name="imageUrl"
+                onChange={e => this.handleFileUpload(e)}
+              />
+            </div>
+            <div className="edit-studio-image">
+              {this.state.imgPath && (
+                <img
+                  className="new-upload-img"
+                  src={this.state.imgPath}
+                  alt="New upload"
+                ></img>
+              )}
+            </div>
+          </div>
           <button type="submit" disabled={this.checkToSend()}>
             Save changes
           </button>
         </form>
         <h2>{this.state.error ? "Something went wrong" : ""}</h2>
         <h2>{this.state.success ? "Success!" : ""}</h2>
-        
-        {this.state.imgPath && <img src={this.state.imgPath} alt="New upload"></img>  }
+
         <div>
           <Link to={`/viewprojects/${this.props.selectedStudio}`}>
-            Back to projects
+            <button className="button-back">Back to projects</button>
           </Link>
         </div>
       </div>

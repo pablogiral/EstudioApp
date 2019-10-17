@@ -13,7 +13,8 @@ export default class viewProjects extends Component {
     this.state = {
       projects: [],
       projectsClean: [],
-      studio: {}
+      studio: {},
+      showform: false,
     };
     this.service = new ProjectService();
     this.serviceStudio = new StudioService();
@@ -73,6 +74,13 @@ export default class viewProjects extends Component {
     this.service.deleteProject(projectToDelete);
   }
 
+  showForm() {
+    
+    this.setState({
+      ...this.state, showform: !this.state.showform
+    })
+  }
+
   render() {
     
     if (!!this.state.studio) {
@@ -83,6 +91,7 @@ export default class viewProjects extends Component {
               className="search"
               updateSearchFormData={e => this.updateSearch(e)}
             ></SearchBar>
+            <button className="button-back" onClick={()=>{this.showForm()}}>Create new project</button>
             <div className="projectView">
               {this.state.projects.map(project => (
                 <Project
@@ -96,11 +105,14 @@ export default class viewProjects extends Component {
                 ></Project>
               ))}
             </div>
-
-            <CreateProject
+            
+             <CreateProject 
+             show={this.state.showform}
               getProject={response => this.getProject(response)}
               urlId={this.props.match.params.id}
             ></CreateProject>
+             
+             
 
             <div>
               <Link to={"/viewstudios"}><button className="button-back">Back to studios</button></Link>

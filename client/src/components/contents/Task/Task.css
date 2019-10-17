@@ -1,18 +1,38 @@
 .taskItemComponent {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   margin-bottom: 0.5rem;
   border: 1px solid black;
   border-radius: 1rem;
   width: 50%;
-  height: 2rem;
+  height: 3rem;
   background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
   font-size: 1.2rem;
   font-weight: 100;
 }
 
-.taskItemComponent span {
-  /* margin-right: 1rem; */
+.task-checkbox {
+  width: 10%;
 }
 
+.task-created{
+  width: 25%;
+}
+
+.task-title {
+  width: 50%;
+}
+
+.task-button {
+  width: 15%
+}
+
+.task-button button {
+  border: 1px solid black;
+  /* color: white; */
+  background: linear-gradient(170deg,rgb(255, 255, 255), rgb(182, 187, 187));
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 100;
+}

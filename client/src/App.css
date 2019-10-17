@@ -1,10 +1,12 @@
-/* .header{
-  margin-bottom: 2rem;
-} */
+
 
 .App {
   text-align: center;
-  height: 100vh;
+  /* height: 100vh; */
+  /* background: fuchsia; */
+  /* background-image: url("https://i.pinimg.com/originals/cf/70/17/cf701732ece053881825d9ae9b96129c.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 .App-header {
