@@ -39,26 +39,51 @@ export default class CreateStudio extends Component {
   };
 
   render() {
-    return (
-      <div className="createStudio">
-        <h3>Create your studio:</h3>
-
-        <form className="create-form" onSubmit={this.handleFormSubmit}>
-          <fieldset>
-            <input
-              type="text"
-              name="studioname"
-              placeholder="Your studio's name..."
-              value={this.state.studioname}
-              onChange={e => this.handleChange(e)}
-            />
-          </fieldset>
-
-          <input type="submit" value="create" />
-        </form>
-
-        <h1>{this.state.error ? "You need a name!" : ""}</h1>
-      </div>
-    );
+    if(this.props.show === false){
+      return (
+        <div className="createStudio hidden">
+          <h3>Create your studio:</h3>
+  
+          <form className="create-form" onSubmit={this.handleFormSubmit}>
+            <fieldset>
+              <input
+                type="text"
+                name="studioname"
+                placeholder="Your studio's name..."
+                value={this.state.studioname}
+                onChange={e => this.handleChange(e)}
+              />
+            </fieldset>
+  
+            <input type="submit" value="create" />
+          </form>
+  
+          <h1>{this.state.error ? "You need a name!" : ""}</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div className="createStudio">
+          <h3>Create your studio:</h3>
+  
+          <form className="create-form" onSubmit={this.handleFormSubmit}>
+            <fieldset>
+              <input
+                type="text"
+                name="studioname"
+                placeholder="Your studio's name..."
+                value={this.state.studioname}
+                onChange={e => this.handleChange(e)}
+              />
+            </fieldset>
+  
+            <input type="submit" value="create" />
+          </form>
+  
+          <h1>{this.state.error ? "You need a name!" : ""}</h1>
+        </div>
+      );
+    }
+    
   }
 }

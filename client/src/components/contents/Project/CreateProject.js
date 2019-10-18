@@ -52,7 +52,7 @@ export default class CreateProject extends Component {
   };
 
   render() {
-    console.log(this.props.show);
+    // console.log(this.props.show);
     if (this.props.show === false) {
       return (
         <div className="createProject hidden">

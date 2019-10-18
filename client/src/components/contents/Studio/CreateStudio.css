@@ -48,3 +48,15 @@
   margin: 1rem, 0;
   padding: 1rem, 0;
 }
+
+.createStudio {
+  position: fixed;
+  top: 30%;
+  transition: 0.5s all ease;
+  /* background: rgb(255, 255, 255); */
+  background: radial-gradient(rgba(255,255,255,0.9), rgba(220,220,220,0.9));
+}
+
+.createStudio.hidden {
+  top: -100%
+}

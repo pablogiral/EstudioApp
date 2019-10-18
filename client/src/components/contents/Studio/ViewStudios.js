@@ -8,7 +8,8 @@ export default class ViewStudios extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      studios: []
+      studios: [],
+      showform: false,
     };
     this.service = new StudioService();
   }
@@ -45,17 +46,25 @@ export default class ViewStudios extends Component {
     this.service.deleteStudio(studioToDelete)
   }
 
+  showForm() {
+    this.setState({
+      ...this.state, showform: !this.state.showform
+    })
+  }
+
   render() {
     
     if (!Array.isArray(this.state.studios)) {
       return (
         <div>
-          <CreateStudio getStudio={this.getStudio} />
+          <button className="button-back" onClick={()=>{this.showForm()}}>Create new studio</button>
+          <CreateStudio getStudio={this.getStudio} show={this.state.showform}/>
         </div>
       );
     } else {
       return (
         <div className="viewStudio">
+          <button className="button-back" onClick={()=>{this.showForm()}}>Create new studio</button>
           <div className="studioView">
             {this.state.studios.map(studio => (
               <Studio
@@ -70,7 +79,7 @@ export default class ViewStudios extends Component {
             ))}
           </div>
 
-          <CreateStudio getStudio={this.getStudio}></CreateStudio>
+          <CreateStudio getStudio={this.getStudio} show={this.state.showform}></CreateStudio>
         </div>
       );
     }

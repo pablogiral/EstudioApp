@@ -32,7 +32,6 @@ export default class viewProjects extends Component {
 
   componentDidMount() {
     this.getStudio();
-    // this.updateSearch();
   }
 
   async getStudio() {
@@ -45,7 +44,6 @@ export default class viewProjects extends Component {
       studio: studio,
       projectsClean: studio.projects,
       projects: studio.projects
-      // projects: allProjects
     });
   }
 
@@ -75,7 +73,6 @@ export default class viewProjects extends Component {
   }
 
   showForm() {
-    
     this.setState({
       ...this.state, showform: !this.state.showform
     })
@@ -107,7 +104,7 @@ export default class viewProjects extends Component {
             </div>
             
              <CreateProject 
-             show={this.state.showform}
+              show={this.state.showform}
               getProject={response => this.getProject(response)}
               urlId={this.props.match.params.id}
             ></CreateProject>
