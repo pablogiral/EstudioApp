@@ -15,11 +15,11 @@ export default class Project extends Component {
           src={this.props.project.projectimage}
           alt={this.props.project.name}
         />
-        <h2>{this.props.project.name}</h2>
+        <h3>{this.props.project.name}</h3>
         <h3>{this.props.project.bandname}</h3>
 
         <Link to={`/viewtasks/${this.props.project._id}`}>
-          <button>See tasks</button>
+          <button>Project details</button>
         </Link>
 
         <div className="horizontal-buttons">

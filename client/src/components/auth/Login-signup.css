@@ -22,22 +22,32 @@
   height: 2rem;
   font-size: 1.2rem;
   font-weight: 100;
-  border-radius: 0.3rem;
+  border-radius: 10px;
   outline: none;
   margin: 1rem;
 }
 
 .LSbutton{
-  border-radius: 0.7rem;
+  border-radius: 10px;
   outline: none;
   margin: 1rem;
   height: 2.5rem;
   width: 10.2rem;
-  background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
+  color: #fff;
+  /* background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F); */
+  background:  #205493;
   box-shadow: 1px 1px 3px 0px #789a9fa6;
   font-size: 1.2rem;
   font-weight: 100;
+  transition: all 0.5s;
 }
+
+.LSbutton:hover {
+  background: #0071bc;
+  font-weight: 200;
+}
+
+
 
 .LStext {
   font-size: 1.2rem;

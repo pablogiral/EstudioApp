@@ -52,7 +52,6 @@ export default class CreateProject extends Component {
   };
 
   render() {
-    // console.log(this.props.show);
     if (this.props.show === false) {
       return (
         <div className="createProject hidden">
@@ -90,7 +89,7 @@ export default class CreateProject extends Component {
                 onChange={e => this.handleChange(e)}
               ></textarea>
 
-              <input type="submit" value="create" />
+              <input type="submit" value="Create" />
             </form>
 
             <h1>{this.state.error ? "Error" : ""}</h1>
@@ -134,7 +133,7 @@ export default class CreateProject extends Component {
                 onChange={e => this.handleChange(e)}
               ></textarea>
 
-              <input type="submit" value="create" />
+              <input type="submit" value="Create" />
             </form>
 
             <h1>{this.state.error ? "Error" : ""}</h1>

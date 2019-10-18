@@ -84,6 +84,7 @@ export default class ViewStudios extends Component {
           </div>
 
           <CreateStudio getStudio={this.getStudio} show={this.state.showform}></CreateStudio>
+          
         </div>
       );
     }

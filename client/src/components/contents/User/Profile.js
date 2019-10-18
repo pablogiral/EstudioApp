@@ -21,11 +21,11 @@ export default class Profile extends Component {
           </div>
           <div className="profile-info">
             <h2>Hello {this.state.user.username}!</h2>
-            <h4>email: {this.state.user.email}</h4>
+            <h4>Email: {this.state.user.email}</h4>
             <h4>User since: {Moment(this.state.user.created_at).format('dddd DD MMM YYYY')}</h4>
             <div>
               <Link to={'/editprofile'}><button props={this.state.user}>Edit your profile</button></Link>
-              <button onClick={() => this.props.deleteUser()}>
+              <button onClick={() => this.props.deleteUser()} className="danger">
                 Delete your profile
               </button>
             </div>

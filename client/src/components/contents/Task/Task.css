@@ -3,11 +3,11 @@
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 0.5rem;
-  border: 1px solid black;
-  border-radius: 1rem;
+  border: 2px solid #205493;
+  border-radius: 10px;
   width: 50%;
   height: 3rem;
-  background: linear-gradient(170deg,rgb(255, 255, 255), #789A9F);
+  background: linear-gradient(170deg,rgb(255, 255, 255), #deedff);
   font-size: 1.2rem;
   font-weight: 100;
 }
@@ -29,10 +29,18 @@
 }
 
 .task-button button {
-  border: 1px solid black;
-  /* color: white; */
-  background: linear-gradient(170deg,rgb(255, 255, 255), rgb(182, 187, 187));
-  border-radius: 5px;
+  border: none;
+  color: white;
+  background: #5c0000;
+  border-radius: 10px;
   font-size: 1.2rem;
   font-weight: 100;
+  transition: all 0.5s;
+}
+
+.task-button button:hover{
+  background: #5c0000;
+  border: 2px solid #ff0000;
+  color: #ffffff;
+  font-weight: 200;
 }

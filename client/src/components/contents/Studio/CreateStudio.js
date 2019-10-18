@@ -55,7 +55,7 @@ export default class CreateStudio extends Component {
               />
             </fieldset>
   
-            <input type="submit" value="create" />
+            <input type="submit" value="Create" />
           </form>
   
           <h1>{this.state.error ? "You need a name!" : ""}</h1>
@@ -77,7 +77,7 @@ export default class CreateStudio extends Component {
               />
             </fieldset>
   
-            <input type="submit" value="create" />
+            <input type="submit" value="Create" />
           </form>
   
           <h1>{this.state.error ? "You need a name!" : ""}</h1>

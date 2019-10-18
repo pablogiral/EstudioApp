@@ -164,7 +164,7 @@ export default class ViewTasks extends Component {
         )}
 
         {this.state.tasks.filter(task => task.done).length === 0 && (
-          <h1>No tasks done</h1>
+          <h3>No tasks done</h3>
         )}
         <div>
           <Link to={`/viewprojects/${this.props.selectedStudio}`}>
