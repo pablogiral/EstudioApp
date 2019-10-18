@@ -34,16 +34,20 @@ export default class ViewStudios extends Component {
   }
 
   deleteStudio(studioToDelete) {
-    
-    let studios = [...this.state.studios];
-    let studioToDeleteFromState = studios.filter(
-      studio => studio._id !== studioToDelete._id
-    );
-    this.setState({
-      ...this.state,
-      studios: studioToDeleteFromState
-    });
-    this.service.deleteStudio(studioToDelete)
+    let studioDeletion = prompt("Type 'delete' to confirm");
+    if (studioDeletion === "delete"){
+
+      let studios = [...this.state.studios];
+      let studioToDeleteFromState = studios.filter(
+        studio => studio._id !== studioToDelete._id
+      );
+      this.setState({
+        ...this.state,
+        studios: studioToDeleteFromState
+      });
+      this.service.deleteStudio(studioToDelete)
+    }
+    else { return }
   }
 
   showForm() {

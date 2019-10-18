@@ -50,9 +50,6 @@ export default class App extends Component {
     }
   }
 
-  
-
-  //este método vuelca la información del usuario y lo guarda en el state de app que siempre puedes revisitar
   fetchUser=()=> {
      this.service
       .loggedin()
@@ -82,7 +79,7 @@ export default class App extends Component {
   }
 
   render() {
-    // console.log(this.state)
+    
     //aqui hacemos rendering condicional dependiendo de si tenemos un usuario logeado o no
     if (this.state.loggedInUser) {
       //en este caso mostramos los contenidos ya que hay usuario

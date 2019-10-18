@@ -14,7 +14,7 @@ export default class viewProjects extends Component {
       projects: [],
       projectsClean: [],
       studio: {},
-      showform: false,
+      showform: false
     };
     this.service = new ProjectService();
     this.serviceStudio = new StudioService();
@@ -60,26 +60,30 @@ export default class viewProjects extends Component {
   }
 
   deleteProject(projectToDelete) {
-    
-    let projects = [...this.state.projects];
-    let projectToDeleteFromState = projects.filter(
-      project => project._id !== projectToDelete._id
-    );
-    this.setState({
-      ...this.state,
-      projects: projectToDeleteFromState
-    });
-    this.service.deleteProject(projectToDelete);
+    let projectDeletion = prompt("Type 'delete' to confirm");
+    if (projectDeletion === "delete") {
+      let projects = [...this.state.projects];
+      let projectToDeleteFromState = projects.filter(
+        project => project._id !== projectToDelete._id
+      );
+      this.setState({
+        ...this.state,
+        projects: projectToDeleteFromState
+      });
+      this.service.deleteProject(projectToDelete);
+    } else {
+      return;
+    }
   }
 
   showForm() {
     this.setState({
-      ...this.state, showform: !this.state.showform
-    })
+      ...this.state,
+      showform: !this.state.showform
+    });
   }
 
   render() {
-    
     if (!!this.state.studio) {
       if (!!this.state.projects) {
         return (
@@ -88,7 +92,14 @@ export default class viewProjects extends Component {
               className="search"
               updateSearchFormData={e => this.updateSearch(e)}
             ></SearchBar>
-            <button className="button-back" onClick={()=>{this.showForm()}}>Create new project</button>
+            <button
+              className="button-back"
+              onClick={() => {
+                this.showForm();
+              }}
+            >
+              Create new project
+            </button>
             <div className="projectView">
               {this.state.projects.map(project => (
                 <Project
@@ -102,17 +113,17 @@ export default class viewProjects extends Component {
                 ></Project>
               ))}
             </div>
-            
-             <CreateProject 
+
+            <CreateProject
               show={this.state.showform}
               getProject={response => this.getProject(response)}
               urlId={this.props.match.params.id}
             ></CreateProject>
-             
-             
 
             <div>
-              <Link to={"/viewstudios"}><button className="button-back">Back to studios</button></Link>
+              <Link to={"/viewstudios"}>
+                <button className="button-back">Back to studios</button>
+              </Link>
             </div>
           </div>
         );
